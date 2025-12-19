@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Admissions Mentor - Expert College Admissions Guidance</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sky-blue: #87CEEB;
+            --light-sky: #E0F4FF;
+            --medium-blue: #4A90E2;
+            --deep-blue: #2E5C8A;
+            --navy-blue: #1E3A5F;
+            --warm-yellow: #FFD700;
+            --soft-yellow: #FFF4B3;
+            --light-yellow: #FFFACD;
+            --cream: #FDFDF9;
+            --text-dark: #1a2332;
+            --text-light: #ffffff;
+            --text-gray: #5a6c7d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Newsreader', serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--cream);
+        }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.2rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--deep-blue);
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--medium-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--warm-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #87CEEB 0%, #B0E2FF 40%, #E0F6FF 70%, #FFFFFF 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 70px;
+            overflow: hidden;
+        }
+
+        /* Cloud animations */
+        .hero::before,
+        .hero::after,
+        .cloud-1,
+        .cloud-2,
+        .cloud-3 {
+            content: '';
+            position: absolute;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+            border-radius: 100%;
+        }
+
+        .hero::before {
+            width: 200px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation: float-cloud 25s infinite ease-in-out;
+        }
+
+        .hero::after {
+            width: 150px;
+            height: 50px;
+            top: 30%;
+            right: 15%;
+            animation: float-cloud 30s infinite ease-in-out reverse;
+        }
+
+        @keyframes float-cloud {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(20px) translateY(-10px); }
+            50% { transform: translateX(-10px) translateY(5px); }
+            75% { transform: translateX(15px) translateY(-5px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 1000px;
+            padding: 3rem 2rem;
+            z-index: 1;
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            color: var(--navy-blue);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            animation: fadeIn 0.8s ease-out;
+            letter-spacing: 0.5rem;
+            word-spacing: 0.8rem;
+        }
+
+        .hero h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 500;
+            color: var(--deep-blue);
+            margin-bottom: 1.2rem;
+            animation: fadeIn 1s ease-out 0.2s both;
+            letter-spacing: 0.05rem;
+        }
+
+        .hero p {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-gray);
+            opacity: 0.95;
+            animation: fadeIn 1.2s ease-out 0.4s both;
+            font-weight: 300;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: linear-gradient(180deg, #ffffff 0%, var(--light-sky) 100%);
+            color: var(--text-dark);
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem;
+        }
+
+        .why-choose::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--medium-blue), transparent);
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+            color: var(--navy-blue);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid .feature-card:nth-child(4),
+        .features-grid .feature-card:nth-child(5) {
+            grid-column: span 1;
+        }
+
+        .features-grid-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .features-row-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 800px;
+            margin: 2.5rem auto 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(74, 144, 226, 0.1);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--warm-yellow), var(--medium-blue));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(74, 144, 226, 0.15);
+            background: white;
+        }
+
+        .feature-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .feature-card p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            font-family: 'Newsreader', serif;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, var(--soft-yellow) 0%, var(--light-yellow) 100%);
+            position: relative;
+            padding: 6rem 2rem;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--warm-yellow), transparent);
+        }
+
+        .testimonials .section-title {
+            color: var(--navy-blue);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-carousel {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-item {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--warm-yellow);
+        }
+
+        .testimonial-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimonial-text {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            text-align: right;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: var(--deep-blue);
+            font-size: 1rem;
+        }
+
+        /* Universities Section */
+        .universities {
+            background: linear-gradient(180deg, var(--light-sky) 0%, white 100%);
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .universities::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 10%, var(--medium-blue) 50%, transparent 90%);
+        }
+
+        .universities .section-title {
+            color: var(--navy-blue);
+            margin-bottom: 3rem;
+        }
+
+        .university-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Categories for universities */
+        .university-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--deep-blue);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--warm-yellow);
+            display: inline-block;
+        }
+
+        .university-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .university-item {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(135, 206, 235, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
+            border-left: 3px solid var(--warm-yellow);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            cursor: default;
+            font-size: 0.95rem;
+        }
+
+        .university-item:hover {
+            background: linear-gradient(135deg, rgba(135, 206, 235, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+            transform: translateX(8px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Special styling for Fulbright */
+        .university-item.special-achievement {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--soft-yellow) 0%, rgba(255, 215, 0, 0.2) 100%);
+            border-left: 4px solid var(--deep-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .university-item.special-achievement:hover {
+            background: linear-gradient(135deg, var(--warm-yellow) 0%, rgba(255, 215, 0, 0.3) 100%);
+            transform: scale(1.02);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--navy-blue) 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 3rem 2rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .university-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Reveal Animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-sky);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--medium-blue), var(--warm-yellow));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--deep-blue), var(--soft-yellow));
+        }
+
+        /* Dividers between sections */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--medium-blue), transparent);
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+        <!-- Navigation -->
+        <nav>
+            <div class="container">
+                <a href="index.html" class="logo">Your Admissions Mentor</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="get-started.html">Get Started</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Your Admissions Mentor</h1>
+            <h2>Expert guidance. Full commitment.</h2>
+            <p>Personal, lasting mentorship invested in your outcome.</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Why Choose Section -->
+    <section id="why-choose" class="why-choose">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Why Choose Your Admissions Mentor</h2>
+            <div class="features-grid">
+                <div class="feature-card scroll-reveal">
+                    <h3>True one-on-one mentorship</h3>
+                    <p>You work directly with me at every stage of the application process. I remain available when it matters most, including for last-minute calls and texts. I am there for anything and everything.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <h3>Honest, independent guidance</h3>
+                    <p>I provide direct, strategic feedback grounded in experience— not company scripts, formulas, or generic advice. My guidance is tailored to each student's goals, voice, and strengths.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <h3>Full commitment to your outcome</h3>
+                    <p>I take my students' success personally. I invest deeply in every application I work on, and I personally care for each student I have ever had.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <h3>Proven writing expertise</h3>
+                    <p>Writing is central to my practice. I am Editor-in-Chief of two Yale publications and write a weekly personal essay column for the Yale Daily News. My testimonials reflect both the quality of my editing and the depth of my mentorship. A full CV is available upon request.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <h3>Lasting Ivy League mentorship</h3>
+                    <p>I maintain long-term relationships with my students and their families beyond the application process. Families gain not just short-term guidance, but a trusted mentor with firsthand experience navigating elite academic environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Testimonials</h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial-item scroll-reveal">
+                    <p class="testimonial-text">Before Maddie's edits, I was struggling with a lot of my essays and feeling unconfident about the story that my application was conveying. After working with Maddie, for the first time, I felt like I had a plan to finish my application. The type of edits Maddie gives is honestly something you will never find anywhere else. Her edits not only tell you what's wrong with your current essay but give you specific plans to fix or write essays step by step. Her flexibility is really admirable. She was willing to call me and work long hours to help me get where I needed to be and worked with me to write amazing essays. Her edits not only include Google doc comments and bullet-pointed plans but also include video edits, which explain her thought process on how she viewed the current state of my essays and how I could improve it. She also provides examples for essay content which is an invaluable resource. Each time, Maddie's suggestions have taken my essays to the next level. I would highly recommend her to anyone who is applying to selective schools. Her edits will make your essays truly standout.</p>
+                    <p class="testimonial-author">— Aneesh (Attending Harvard, accepted into Stanford, MIT, Cornell, Duke, and more)</p>
+                </div>
+                
+                <div class="testimonial-item scroll-reveal">
+                    <p class="testimonial-text">I would sum my experience with Madison in one word: awesome. I'm an international student with what I'd consider relatively low stats, and Maddie took my essays from good to perfect. She provided me with a boatload of extra material and was willing to go through my essays until I felt they were perfect. I've since been accepted to Duke University's Pratt school of engineering with Merit scholarship (with my low stats 💀), Pomona College and RIT. Getting into these schools are only a testimony of how Maddie improved my essays and helped me to find my authentic voice to tell a compelling story. I'd definitely recommend that you pay her $50 dollars per edit (jk jk🤣). But honestly, she's amazing, and it would be a wise decision to have her go through your essays with her critical eyes, because at this point, she's the holder of that 'secret sauce' colleges like.</p>
+                    <p class="testimonial-author">— S.L (Accepted into Duke University's Pratt School of Engineering with Merit scholarship, Pomona College and RIT)</p>
+                </div>
+                
+                <div class="testimonial-item scroll-reveal">
+                    <p class="testimonial-text">I had Maddie edit three of my essays for my UMICH application and I am SO thankful to have found her. Maddie made so many edits on my essays making them top-notch and error-free. Some edits she made were things like word choice, tenses, sentence structure, overall structure, word count and so much more. Not only did she edit my essays, but she also created videos describing how to fix my essay and videos explaining how to write certain supplementals. This was very beneficial in many ways and gave me a good idea of what to fix and where to start. The advice she gave was great and I could tell she knows a lot about the application process and how to make your essay show who you are as a person. Maddie also helped me right up until the minute before my application was due, literally. I cannot thank her enough for all of her help and I can proudly say I am confident with my application solely because of my essays. Maddie is a very hard-worker and a pro at what she does!</p>
+                    <p class="testimonial-author">— Natalie (Accepted into UMICH)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Universities Section -->
+    <section id="universities" class="universities">
+        <div class="university-container">
+            <h2 class="section-title scroll-reveal">Where My Students Have Been Admitted</h2>
+            
+            <!-- Ivy League & Top Universities -->
+            <div class="university-category scroll-reveal">
+                <h3 class="category-label">Ivy League & Top 10 Universities</h3>
+                <div class="university-grid">
+                    <div class="university-item">Harvard University</div>
+                    <div class="university-item">Stanford University</div>
+                    <div class="university-item">Massachusetts Institute of Technology (MIT)</div>
+                    <div class="university-item">Yale University</div>
+                    <div class="university-item">Cornell University</div>
+                    <div class="university-item">Columbia University, Barnard College</div>
+                    <div class="university-item">University of Pennsylvania</div>
+                    <div class="university-item">Duke University</div>                   
+                    <div class="university-item">Dartmouth College</div>
+                    <div class="university-item">Brown University</div>
+                    <div class="university-item">University of California, Berkeley</div>
+                    <div class="university-item">University of California, Los Angeles (UCLA)</div>
+
+
+
+                </div>
+            </div>
+
+            <!-- Top 20 Universities -->
+            <div class="university-category scroll-reveal">
+                <h3 class="category-label">Top 20 Universities</h3>
+                <div class="university-grid">
+                    <div class="university-item">University of Michigan</div>
+                    <div class="university-item">University of Southern California</div>
+                    <div class="university-item">Northwestern University</div>
+                    <div class="university-item">Vanderbilt University</div>
+                    <div class="university-item">Rice University</div>
+                    <div class="university-item">Emory University</div>
+                    <div class="university-item">University of California, San Diego (UCSD) </div>
+                    <div class="university-item">University of California, Davis </div>
+                    <div class="university-item">University of California, Irvine (UCI)</div>
+                    <div class="university-item">University of California, Santa Barbara (UCSB) </div>
+                    <div class="university-item">University of California, Santa Cruz (UCSC)) </div>
+
+                </div>
+            </div>
+
+            <!-- Liberal Arts Colleges -->
+            <div class="university-category scroll-reveal">
+                <h3 class="category-label">Top Liberal Arts Colleges</h3>
+                <div class="university-grid">
+                    <div class="university-item">Swarthmore College</div>
+                    <div class="university-item">Williams College</div>
+                    <div class="university-item">Amherst College</div>
+                    <div class="university-item">Pomona College</div>
+                    <div class="university-item">Wesleyan University</div>
+                    <div class="university-item">Wellesley College</div>
+                </div>
+            </div>
+
+            <!-- Specialized Programs & Other Top Schools -->
+            <div class="university-category scroll-reveal">
+                <h3 class="category-label">Specialized Programs & Engineering Schools</h3>
+                <div class="university-grid">
+                    <div class="university-item">Duke Pratt School of Engineering</div>
+                    <div class="university-item">Cornell University – College of Engineering</div>
+                    <div class="university-item">University of Michigan – Ross School of Business</div>
+                    <div class="university-item">University of Michigan – College of Engineering</div>
+                    <div class="university-item">Georgia Institute of Technology</div>
+                    <div class="university-item">Indiana University – Kelley School of Business</div>
+                    <div class="university-item">University of Virginia</div>
+                    <div class="university-item">Virginia Tech</div>
+                    <div class="university-item">Northeastern University</div>
+                    <div class="university-item">UT Austin</div>
+                    <div class="university-item">University of Rochester</div>
+                    <div class="university-item">All University of California campuses</div>
+                    <div class="university-item">George Mason University</div>
+                    <div class="university-item">University of Massachusetts (UMass)</div>
+                    <div class="university-item">Michigan State University</div>
+                    <div class="university-item">University of Waterloo</div>
+                    <div class="university-item">Bocconi University</div>
+                </div>
+            </div>
+
+            <!-- Special Achievement -->
+            <div class="university-category scroll-reveal">
+                <div class="university-grid">
+                    <div class="university-item special-achievement">✨ Fulbright Scholarship: Open Study/Research Award ✨</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Admissions Mentor. Expert guidance for elite college admissions.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        
+        // Trigger on load
+        window.addEventListener('load', revealOnScroll);
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add hover effect to navigation on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const nav = document.querySelector('nav');
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        }, false);
+    </script>
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials - Your Admissions Mentor</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sky-blue: #87CEEB;
+            --light-sky: #E0F4FF;
+            --medium-blue: #4A90E2;
+            --deep-blue: #2E5C8A;
+            --navy-blue: #1E3A5F;
+            --warm-yellow: #FFD700;
+            --soft-yellow: #FFF4B3;
+            --light-yellow: #FFFACD;
+            --cream: #FDFDF9;
+            --text-dark: #1a2332;
+            --text-light: #ffffff;
+            --text-gray: #5a6c7d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Newsreader', serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--cream);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.2rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--deep-blue);
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--medium-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--warm-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Testimonials Hero */
+        .testimonials-hero {
+            margin-top: 70px;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--soft-yellow) 0%, var(--light-yellow) 50%, var(--light-sky) 100%);
+            text-align: center;
+        }
+
+        .testimonials-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--navy-blue);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.3rem;
+        }
+
+        .testimonials-hero p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        /* Testimonials Section */
+        .testimonials-content {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial-item {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--warm-yellow);
+        }
+
+        .testimonial-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .quote-mark {
+            position: absolute;
+            top: -10px;
+            left: 30px;
+            font-size: 4rem;
+            color: var(--soft-yellow);
+            font-family: 'DM Serif Display', serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-family: 'Newsreader', serif;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-top: 1rem;
+        }
+
+        .testimonial-author {
+            text-align: right;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--deep-blue);
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+        }
+
+        .testimonial-highlight {
+            background: linear-gradient(135deg, var(--light-yellow) 0%, rgba(255, 255, 255, 0.9) 100%);
+            border-left-color: var(--deep-blue);
+            border-width: 5px;
+        }
+
+        /* Success Stats */
+        .success-stats {
+            background: linear-gradient(180deg, var(--light-sky) 0%, white 100%);
+            padding: 4rem 2rem;
+            margin: 0 0 4rem 0;
+            border-radius: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: var(--deep-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-gray);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--navy-blue) 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 3rem 2rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-item {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+            <!-- Navigation -->
+            <nav>
+                <div class="container">
+                    <a href="index.html" class="logo">Your Admissions Mentor</a>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="get-started.html">Get Started</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+    <!-- Testimonials Hero -->
+    <section class="testimonials-hero">
+        <h1>Student Success Stories</h1>
+        <p>Real experiences from students who achieved their college dreams with personalized mentorship</p>
+    </section>
+
+    <!-- Success Stats -->
+    <div class="testimonials-content">
+        <div class="success-stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Students Mentored</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2,000+</div>
+                    <div class="stat-label">Essays Edited</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Personal Attention</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ALL Testimonials -->
+        <div class="testimonial-item testimonial-highlight">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Before Maddie's edits, I was struggling with a lot of my essays and feeling unconfident about the story that my application was conveying. After working with Maddie, for the first time, I felt like I had a plan to finish my application. The type of edits Maddie gives is honestly something you will never find anywhere else. Her edits not only tell you what's wrong with your current essay but give you specific plans to fix or write essays step by step. Her flexibility is really admirable. She was willing to call me and work long hours to help me get where I needed to be and worked with me to write amazing essays. Her edits not only include Google doc comments and bullet-pointed plans but also include video edits, which explain her thought process on how she viewed the current state of my essays and how I could improve it. She also provides examples for essay content which is an invaluable resource. Each time, Maddie's suggestions have taken my essays to the next level. I would highly recommend her to anyone who is applying to selective schools. Her edits will make your essays truly standout.</p>
+            <p class="testimonial-author">— Aneesh<br>Attending Harvard, accepted into Stanford, MIT, Cornell, Duke, and more</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I would sum my experience with Madison in one word: awesome. I'm an international student with what I'd consider relatively low stats, and Maddie took my essays from good to perfect. She provided me with a boatload of extra material and was willing to go through my essays until I felt they were perfect. I've since been accepted to Duke University's Pratt school of engineering with Merit scholarship (with my low stats 💀), Pomona College and RIT. Getting into these schools are only a testimony of how Maddie improved my essays and helped me to find my authentic voice to tell a compelling story. I'd definitely recommend that you pay her $50 dollars per edit (jk jk🤣). But honestly, she's amazing, and it would be a wise decision to have her go through your essays with her critical eyes, because at this point, she's the holder of that 'secret sauce' colleges like.</p>
+            <p class="testimonial-author">— S.L<br>International Student, Accepted to Duke Engineering with Merit Scholarship, Pomona, and RIT</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I had Maddie edit three of my essays for my UMICH application and I am SO thankful to have found her. Maddie made so many edits on my essays making them top-notch and error-free. Some edits she made were things like word choice, tenses, sentence structure, overall structure, word count and so much more. Not only did she edit my essays, but she also created videos describing how to fix my essay and videos explaining how to write certain supplementals. This was very beneficial in many ways and gave me a good idea of what to fix and where to start. The advice she gave was great and I could tell she knows a lot about the application process and how to make your essay show who you are as a person. Maddie also helped me right up until the minute before my application was due, literally. I cannot thank her enough for all of her help and I can proudly say I am confident with my application solely because of my essays. Maddie is a very hard-worker and a pro at what she does!</p>
+            <p class="testimonial-author">— Natalie<br>Accepted to University of Michigan</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">What I loved the most about Madison's edits is how well she can improve word choice and weave in beautiful descriptive language. At the end of her edits, she writes several bullet points summarizing what she thought of the essay as a whole, whether the topic could be better, and how to think of a potentially better idea. I found these to be incredibly helpful. In addition to her meticulous edits, she's also highly responsive and professional. 100% would recommend it!</p>
+            <p class="testimonial-author">— Kiron<br>Accepted to University of Michigan Engineering</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">You're a lifesaver AND a genius!! Thank you so much, YOU are amazing! I really don't think there's anything more to fix since you really addressed everything I tried to portray through my essays. Thanks for doing this essay marathon with me on the first day of 2021. Ah, that is so cool just to think about. Thank you SO much! How are you so smart and humble at the same time, God is unfair.</p>
+            <p class="testimonial-author">— Jennifer, Jaeeun<br>Duke, Pratt School of Engineering, Class of 2026</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Maddie's essay edits are amazing. I got two of my 650-word essays edited by her and it truly impressed me when I read my essays after she polished them. Her word choice to improve my vocabulary in the essay was super cool because it captured my tone really well to picture my feelings in the reader's mind and even helped me cut down bulky sentences to fit for the 650-word count. If you guys don't know - Maddie is not someone who gives this service solely for money- when she decides to edit your essay she really means it to help you out of her heart: last December she sacrificed her free time during Christmas to help me out and edit my essays and it's definitely something that no other essay editing service provider would do unless they charge you like 10 times the amount. So guys, anyone out there who is searching for an excellent essay editor who would dive into your essay to edit it in the most spectacular way, I highly recommend you pick Maddie because she's that icon.</p>
+            <p class="testimonial-author">— Hiyath<br>Sri Lanka</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">As an international student, I was completely unfamiliar with the US college application process at first and had no idea what colleges were looking for in an applicant. Thankfully, I chanced upon Maddie, and I'm so glad I did! She patiently guided me through the essay-writing process step-by-step, from formulating and organizing my ideas to adding descriptive imagery to better engage my reader. I loved that her feedback was at once honest, encouraging, and painstakingly detailed, pushing me to improve my essays with every new draft I wrote. She was also very timely and replied to emails within 24 hours, aiding me in coping with tight application deadlines. When our plans to discuss my essay over a call fell through due to time zone differences, she recorded a video reviewing my essay line by line and provided me with comprehensive essay advice she had compiled herself. Overall, I had an excellent experience–Maddie is so pleasant to work with, and I'd recommend her essay-editing services for anyone :)</p>
+            <p class="testimonial-author">— Gabrielle<br>Singapore</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Maddie was so kind and helped me through the stress of college admission. She edited my essay for sentence structure, rephrasing, and overall cohesion. She read through my essay several times and gave me lots of personal and helpful edits. I can tell she really cared about making my essay stronger and doing anything she could to help. She's very professional and kind and I would highly recommend her to anyone looking for essay editing.</p>
+            <p class="testimonial-author">— Emma</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I asked Madison to edit my essays literally a day before the deadline and she provided the best edits anyone has given over the past couple of months of asking family members, teachers, and alumni. She was very specific on what edits needed to be made, and kindly made a video explaining why certain things needed to be removed. My favorite part about her is that she transformed my essays but still managed to keep my voice and the original essence. I recommend her to anyone. Even if you think your essays are great she will find a way to make them even better!!</p>
+            <p class="testimonial-author">— Aanya<br>UCs, USC, IU School of Business</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I asked Madison to edit my college admissions essay an hour before the deadline and she nonetheless provided me with the best advice and critique of all the people I had asked prior. I really appreciated the insight, honesty, and time she took out to edit every aspect of my essay -from grammatical mistakes to irrelevant and long-winded descriptions- that resulted in a very coherent and unique essay I was very confident in.</p>
+            <p class="testimonial-author">— Zayna<br>UPenn and Boston College</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">THANK YOU SO SO MUCH, for the very specific instructions on how I can improve. Like I'm actually really surprised because whenever I give it to my friends or teachers they always just point out what makes them feel wrong. It makes me so stressed because I didn't know how to improve. BUT you really really helped in a way that didn't totally stress me out. That means a lot to me. I will definitely be coming back to you for more edits!</p>
+            <p class="testimonial-author">— Arnav<br>Stanford</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I just wanted to say your advice is so helpful!!!! I don't have a descriptive style of writing in my essays bc I think I've been treating them more analytically than personally, so your advice made me think of things from a new perspective!! Also, I'm a journalist (editor in chief of student newspaper) and I think I just wrote off auto-pilot since we are told to make our stories concise and straightforward so thank you a ton!!! nobody else who read my work really pointed it out and I'm seeing a new way in how to my supplementals better now!</p>
+            <p class="testimonial-author">— Amy<br>Yale</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Hey Maddie! Hope you've been well. You edited my Common App Essay this past December, and I just wanted to tell you that I'll be attending Duke University this fall! Thank you so much for all of your help throughout the admissions process!!</p>
+            <p class="testimonial-author">— Rohit G<br>Duke University</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">You were so great, genuinely helpful, and very straight to the point in the comments which made it easier on my side to understand what I needed to change, thank you so much! p.s the video was much more informative, if you're working with other students I recommend doing that :)</p>
+            <p class="testimonial-author">— Yomna</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">HEYYY MADDIE I GOT INTO USC!!! THIS IS SO UNREAL CONSIDERING MY GPA ISN'T IMPRESSIVE AT ALL!!! I JUST WANNA SAY THANK YOU SO MUCH FOR YOUR HELP WITH THE ESSAY I'M SURE IT PLAYED A SIGNIFICANT ROLE IN MY ACCEPTANCE :) YOU'RE THE BEST I JUST WANNA SAY I'M TRULY GRATEFUL FOR YOUR HELP 🤩🤩🤩</p>
+            <p class="testimonial-author">— Dung Van<br>USC</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Maddie looked over my UC apps and really helped elevate them to the next level, her editing is incredible 🥺can't recommend it enough!!</p>
+            <p class="testimonial-author">— Sandhya<br>UCs</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Hey Maddie! You are amazing, that's why I have so much faith in you. You are the best person to review my essays and I'm glad I got to know you! I am so impressed by all of your edits and work!</p>
+            <p class="testimonial-author">— Jamie</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you for your edits and prompt feedback! I really appreciate that you spent extra time on my apps. Your comments are one of the most thoughtful and detailed I've ever gotten.</p>
+            <p class="testimonial-author">— Alvin<br>Cornell</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Maddie was a lifesaver for my UC essays: she completely transformed them! I consider myself to be a strong writer and was rather confident about my PIQs, but they seemed lifeless without her insightful edits. She guided me through each aspect of my essay by disclosing her analysis and opinions with a video that she personally recorded just for me! Having a college counselor already, I can very confidently say that Maddison has steered my college essays in a way that no professional has in the past few months. I thoroughly enjoyed working with her and would recommend everyone, confident with their essays or not, to get them looked over by Maddie so that she can "work her magic" and inject it within your application.</p>
+            <p class="testimonial-author">— Navya<br>UCs</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Yay Madison I honestly can't thank you enough. Your edits are amazing! It feels great that I'm going through this together with you!! :) I am in LOVE with the EC essay! I can see that you've put a lot of thought into it (I actually think you did more thinking than me HAHA and I appreciate it so much). This is exactly the theme I tried to portray through this essay. I'm really happy with how it turned out! Thank you so much! :)</p>
+            <p class="testimonial-author">— Fiza<br>NYU, Fordham Gabelli School of Business</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I just read over all of the edits and fixed my writing with the edits you suggested. I truly believe that my essay has improved a lot with your help! Thank you so much! I incorporated all of your edits and I am so happy with my essay now! This whole college application process is pretty tough due to COVID since my counselors aren't able to really give one on one help. I'm so happy I found your post because you've been so helpful!</p>
+            <p class="testimonial-author">— Amanda<br>Lehigh University</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I so appreciate all the help you've given me, and I definitely could not have gotten through this college application season without you. :)</p>
+            <p class="testimonial-author">— High School Senior 2020</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you so much! My NYU turned out wonderful, and I feel it truly represents who I am. I will absolutely let you know if I have any more edits that need to be made. Thank you so much because I understand how busy you are. It means a lot.</p>
+            <p class="testimonial-author">— Satya<br>Indiana University - Kelley School of Business / NYU Stern</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you so much for the edits! You definitely improved my work drastically! Thank you again and thank you for being patient with me as well.</p>
+            <p class="testimonial-author">— Jisoo</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you so much for your comments and advice it really means a lot to me and I'm happy about it. Your edits are amazing. When I was writing my essays, I had a lot of feelings to portray, but I couldn't do it with fewer words. Your edits actually captured the essence and portrayed my essays well. I really appreciate the help you did because you see it's not the amount that matters, it's your willingness to help me out. I personally couldn't show my essay to anyone because it's very personal so I had faith in you and you did your best! I completely get how it is for you to edit essays at a time of Christmas and I think we must be thankful to you for sacrificing your time for our essays.</p>
+            <p class="testimonial-author">— Katie</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you so much for your edits on my common app! They really elevated my writing.</p>
+            <p class="testimonial-author">— Mary<br>Cornell</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Maddie, I wanted to tell you I am incredibly grateful for your edits. You have natural-born talent. I will let know if I get into my dream school!</p>
+            <p class="testimonial-author">— Maria<br>Boston University</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I'm going through your edits right now and honestly, I can't thank you better. I will be having you edit the rest of my essays!</p>
+            <p class="testimonial-author">— James<br>Australia</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you for everything. Truly, you've been really helpful in making final edits to my RA essays.</p>
+            <p class="testimonial-author">— Justin</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I really liked your conclusion, it makes the essay much more powerful! Thanks a lot for your feedback on my essays and even for making the helpful video for me. I really appreciate that you went ahead and wrote out your changes for my second essay even though you did not have to.</p>
+            <p class="testimonial-author">— Rohit</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you so much for all your help! You have been a big help this application season. I will be sure to recommend you to anyone looking to get their essays edited in the future. Great service.</p>
+            <p class="testimonial-author">— Ishan<br>Harvard</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I just went through all of your edits and I found them very helpful! Your work really did take my writing to the next level and eliminated some of the awkward phrasings I had earlier. Also, since your edits are so good, I want you to look at my CommonApp essay. I've had it finalized for a while, but if it's possible I'd like to get your eyes on it since you've helped me so much with all of my RA supplementals. Thank you so much for all your help!</p>
+            <p class="testimonial-author">— Amar</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I just watched the video you made and I am going through your edits. Definitely very helpful, I can't thank you enough! I just wish I found your service earlier lol.</p>
+            <p class="testimonial-author">— Katherine</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I just went through your edits—the writing is much stronger now! I'm grateful for the additional effort you've put into my essays.</p>
+            <p class="testimonial-author">— High School Senior 2021</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thanks a lot for your time and effort spent on editing my essays! Your suggestions are amazing and spot-on :) I really appreciate the call earlier today (yesterday EST)! I have a much better idea of what places of improvement to look for in my UC essays now. I'm happy with the payments as well!</p>
+            <p class="testimonial-author">— Justin<br>Hong Kong</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I just want to say thanks so much for your help! Thanks for taking your time to make the video!</p>
+            <p class="testimonial-author">— Chloe</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Madison, I am honestly so thankful for your work and dedication! I live in an area with limited resources when it comes to college stuff, so your help is tremendously appreciated.</p>
+            <p class="testimonial-author">— Kent<br>Texas</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you so much for the edits, you definitely know how to write.</p>
+            <p class="testimonial-author">— Danika</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you so so much! I had a feeling that the essay was too abstract but I couldn't pinpoint the exact issue. You put it into words perfectly. I appreciate all your advice and will be taking it into consideration as I revise my essay. You are the best! I'll definitely let you know if I have any questions or need any help, but honestly, your videos were very thorough and explanatory. Thank you so much again.</p>
+            <p class="testimonial-author">— Keylin</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you so much for helping me. I genuinely appreciate all the time you put in to help me. Your edits were all super thorough and I cannot wait for my acceptances to come in.</p>
+            <p class="testimonial-author">— Hong</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you so much for your kind words. I'm sure we would get along well together :) Thank you once again for all the time you put in to help me. You are amazing <3</p>
+            <p class="testimonial-author">— Joy</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I appreciate your perspective on my essays. They really helped me clarify some ideas. Everything was so detailed!</p>
+            <p class="testimonial-author">— Bryan<br>Singapore</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Thank you for your edits! I am truly grateful you took so much of your time for me. I really appreciate the changes you've made in the wording and flow. They flow so smoothly now! It was super helpful to hear what I should do specifically--that I should write about how I was like before.</p>
+            <p class="testimonial-author">— Aoi<br>Japan</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">THANK YOU SO MUCH!! (Are Yale students all so compassionate like you? haha.) How are you so kind and smart!!</p>
+            <p class="testimonial-author">— Adriana<br>Mexico</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Knowing your skills and experience, I'd totally be willing to pay even more. I'm so impressed</p>
+            <p class="testimonial-author">— Jia<br>Europe</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Wow -- You are an artist with words! Thank you so much for your help!</p>
+            <p class="testimonial-author">— Brynn</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Maddie has been super helpful in my transfer application essays. She's not only skilled with words and essay structure, but she is highly determined to get each essay to perfection. She goes through and pretty much rewrites the entire essay. Maddie also makes videos that are incredibly useful for summarizing her edits and what changes I need to make from my end. She definitely puts the effort in. Overall, I'd definitely recommend Maddie to anyone needing help or edits on their college application essays.</p>
+            <p class="testimonial-author">— Stanley<br>Transfer Student</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">I GOT IN! I just wanted to let you know I got into UMICH today! I am overwhelmed and truly would not have been able to do it without your help! I cannot thank you enough! Thank you so much for the endless encouragement and support!</p>
+            <p class="testimonial-author">— High School Senior<br>University of Michigan</p>
+        </div>
+
+        <div class="testimonial-item">
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">This whole college application process is pretty tough due to COVID since my counselors aren't able to really give one on one help. I'm so happy I found your post because you've been so helpful! I just read over all of the edits and fixed my writing with the edits you suggested. I truly believe that my essay has improved a lot with your help! Thank you so much!</p>
+            <p class="testimonial-author">— Jan</p>
+        </div>
+        
+        <!-- Contact CTA -->
+        <div style="background: linear-gradient(135deg, var(--medium-blue) 0%, var(--deep-blue) 100%); padding: 3rem; border-radius: 20px; text-align: center; color: white; margin: 3rem 0;">
+            <h3 style="font-family: 'DM Serif Display', serif; font-size: 2rem; margin-bottom: 1.5rem;">Ready to Join These Success Stories?</h3>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Start your journey with personalized mentorship today</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSduoBkEIEocldx_nc81VZ9i-hqDVDj0dAtnP23RP-XR7j4XOA/viewform?usp=header" 
+               target="_blank"
+               style="display: inline-block; padding: 1rem 2.5rem; background: var(--warm-yellow); color: var(--navy-blue); text-decoration: none; font-family: 'Inter', sans-serif; font-weight: 600; border-radius: 50px; margin-bottom: 1.5rem; transition: all 0.3s ease;">
+                Complete Intake Form
+            </a>
+            <p style="font-size: 1.1rem;">Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f79a96939e849899d993d9958283949f9c98b7909a969e9bd994989a">[email&#160;protected]</a></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>
