@@ -184,6 +184,7 @@
 
             /* Mobile menu - slides in from right */
             .nav-links {
+                z-index: 1000;
                 position: fixed;
                 top: 0;
                 right: -100%;
@@ -1318,15 +1319,23 @@
         }
     </script>
 
-     <!-- ==========================================
-         NEW: JavaScript for mobile menu toggle
-         Add this right before </body>
+     
+    <!-- ==========================================
+         Mobile menu toggle (fixed)
          ========================================== -->
-         <script>
-            // Opens/closes the mobile menu
-            function toggleMenu() {
-                document.querySelector('.hamburger').classList.toggle('active');
-                document.querySelector('.nav-links').classList.toggle('active');
-            }
-            
-            // Closes the menu when a lin
+    <script>
+        // Opens/closes the mobile menu
+        function toggleMenu() {
+            document.querySelector('.hamburger').classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Closes the menu when a nav link is clicked (mobile)
+        function closeMenu() {
+            document.querySelector('.hamburger').classList.remove('active');
+            document.querySelector('.nav-links').classList.remove('active');
+        }
+    </script>
+
+</body>
+</html>
