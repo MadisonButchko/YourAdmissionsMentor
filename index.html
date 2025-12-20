@@ -407,8 +407,29 @@
             font-family: 'Inter', sans-serif;
             font-size: 1.3rem;
             color: var(--deep-blue);
-            margin-bottom: 1rem;
+            margin-bottom: 0;
             font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .feature-card h3:hover {
+            color: var(--medium-blue);
+        }
+
+        .feature-card h3::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .feature-card.open h3::after {
+            content: '−';
         }
 
         .feature-card p {
@@ -416,6 +437,17 @@
             line-height: 1.8;
             color: var(--text-gray);
             font-family: 'Newsreader', serif;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, margin-top 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .feature-card.open p {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 1rem;
         }
 
         /* Testimonials Section */
@@ -517,10 +549,42 @@
             font-size: 1.2rem;
             font-weight: 600;
             color: var(--deep-blue);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
+            margin-bottom: 0;
+            padding: 1rem 1.5rem;
             border-bottom: 2px solid var(--warm-yellow);
-            display: inline-block;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: white;
+            border-radius: 12px 12px 0 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-label:hover {
+            color: var(--medium-blue);
+            background: rgba(135, 206, 235, 0.1);
+        }
+
+        .category-label::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .university-category.open .category-label::after {
+            content: '−';
+        }
+
+        .university-category.open .category-label {
+            border-radius: 12px 12px 0 0;
+        }
+
+        .university-category:not(.open) .category-label {
+            border-radius: 12px;
+            margin-bottom: 0;
         }
 
         .university-grid {
@@ -529,9 +593,42 @@
             gap: 1rem;
             padding: 2rem;
             background: white;
-            border-radius: 16px;
+            border-radius: 0 0 16px 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
+            margin-bottom: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .university-category.open .university-grid {
+            max-height: 2000px;
+            opacity: 1;
+            padding: 2rem;
+        }
+
+        /* Keep Ivy League section always open */
+        .university-category.always-open .category-label {
+            cursor: default;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .university-category.always-open .category-label::after {
+            display: none;
+        }
+
+        .university-category.always-open .category-label:hover {
+            color: var(--deep-blue);
+            background: white;
+        }
+
+        .university-category.always-open .university-grid {
+            max-height: 2000px;
+            opacity: 1;
+            padding: 2rem;
         }
 
         .university-item {
@@ -909,23 +1006,23 @@
         <div class="container">
             <h2 class="section-title scroll-reveal">Why Choose Your Admissions Mentor</h2>
             <div class="features-grid">
-                <div class="feature-card scroll-reveal">
+                <div class="feature-card scroll-reveal" onclick="toggleFeature(this)">
                     <h3>True one-on-one mentorship</h3>
                     <p>You work directly with me at every stage of the application process. I remain available when it matters most, including for last-minute calls and texts. I am there for anything and everything.</p>
                 </div>
-                <div class="feature-card scroll-reveal">
+                <div class="feature-card scroll-reveal" onclick="toggleFeature(this)">
                     <h3>Honest, independent guidance</h3>
                     <p>I provide direct, strategic feedback grounded in experience— not company scripts, formulas, or generic advice. My guidance is tailored to each student's goals, voice, and strengths.</p>
                 </div>
-                <div class="feature-card scroll-reveal">
+                <div class="feature-card scroll-reveal" onclick="toggleFeature(this)">
                     <h3>Full commitment to your outcome</h3>
                     <p>I take my students' success personally. I invest deeply in every application I work on, and I personally care for each student I have ever had.</p>
                 </div>
-                <div class="feature-card scroll-reveal">
+                <div class="feature-card scroll-reveal" onclick="toggleFeature(this)">
                     <h3>Proven writing expertise</h3>
                     <p>Writing is central to my practice. I am Editor-in-Chief of two Yale publications and write a weekly personal essay column for the Yale Daily News. My testimonials reflect both the quality of my editing and the depth of my mentorship. A full CV is available upon request.</p>
                 </div>
-                <div class="feature-card scroll-reveal">
+                <div class="feature-card scroll-reveal" onclick="toggleFeature(this)">
                     <h3>Lasting Ivy League mentorship</h3>
                     <p>I maintain long-term relationships with my students and their families beyond the application process. Families gain not just short-term guidance, but a trusted mentor with firsthand experience navigating elite academic environments.</p>
                 </div>
@@ -951,7 +1048,7 @@
                 </a>
             </div>
             <div class="cta-contact">
-                <a href="mailto:madison.d.butchko@gmail.com">madison.d.butchko@gmail.com</a>
+                <a href="/cdn-cgi/l/email-protection#b3ded2d7dac0dcdd9dd79dd1c6c7d0dbd8dcf3d4ded2dadf9dd0dcde"><span class="__cf_email__" data-cfemail="2c414d48455f43420248024e59584f4447436c4b414d4540024f4341">[email&#160;protected]</span></a>
                 <span>•</span>
                 <a href="tel:248-212-3123">248-212-3123</a>
                 <span>•</span>
@@ -1054,8 +1151,8 @@
         <div class="university-container">
             <h2 class="section-title scroll-reveal">Where My Students Have Been Admitted</h2>
             
-            <!-- Ivy League & Top Universities -->
-            <div class="university-category scroll-reveal">
+            <!-- Ivy League & Top Universities - Always Open -->
+            <div class="university-category always-open scroll-reveal">
                 <h3 class="category-label">Ivy League & Top 10 Universities</h3>
                 <div class="university-grid">
                     <div class="university-item">Harvard University</div>
@@ -1080,9 +1177,9 @@
                 </div>
             </div>
 
-            <!-- Top 40 Universities -->
+            <!-- Top 40 Universities - Dropdown -->
             <div class="university-category scroll-reveal">
-                <h3 class="category-label">Other Top Universities</h3>
+                <h3 class="category-label" onclick="toggleUniversity(this.parentElement)">Other Top Universities</h3>
                 <div class="university-grid">
                     <div class="university-item">Emory University</div>
                     <div class="university-item">University of California, San Diego (UCSD) </div>
@@ -1101,9 +1198,9 @@
                 </div>
             </div>
 
-            <!-- Liberal Arts Colleges -->
+            <!-- Liberal Arts Colleges - Dropdown -->
             <div class="university-category scroll-reveal">
-                <h3 class="category-label">Top Liberal Arts Colleges</h3>
+                <h3 class="category-label" onclick="toggleUniversity(this.parentElement)">Top Liberal Arts Colleges</h3>
                 <div class="university-grid">
                     <div class="university-item">Swarthmore College</div>
                     <div class="university-item">Williams College</div>
@@ -1114,9 +1211,9 @@
                 </div>
             </div>
 
-            <!-- Specialized Programs & Other Top Schools -->
+            <!-- Specialized Programs & Other Top Schools - Dropdown -->
             <div class="university-category scroll-reveal">
-                <h3 class="category-label">Specialized Programs & Schools</h3>
+                <h3 class="category-label" onclick="toggleUniversity(this.parentElement)">Specialized Programs & Schools</h3>
                 <div class="university-grid">
                     <div class="university-item">Duke Pratt School of Engineering</div>
                     <div class="university-item">Cornell University – College of Engineering</div>
@@ -1139,7 +1236,7 @@
             </div>
 
             <!-- Special Achievement -->
-            <div class="university-category scroll-reveal">
+            <div class="university-category always-open scroll-reveal">
                 <div class="university-grid">
                     <div class="university-item special-achievement">✨ Fulbright Scholarship: Open Study/Research Award ✨</div>
                 </div>
@@ -1155,7 +1252,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1209,6 +1306,16 @@
             
             lastScrollTop = scrollTop;
         }, false);
+
+        // Toggle feature card dropdown
+        function toggleFeature(card) {
+            card.classList.toggle('open');
+        }
+
+        // Toggle university category dropdown
+        function toggleUniversity(category) {
+            category.classList.toggle('open');
+        }
     </script>
 
      <!-- ==========================================
@@ -1222,13 +1329,4 @@
                 document.querySelector('.nav-links').classList.toggle('active');
             }
             
-            // Closes the menu when a link is clicked
-            function closeMenu() {
-                document.querySelector('.hamburger').classList.remove('active');
-                document.querySelector('.nav-links').classList.remove('active');
-            }
-        </script>
-
-
-</body>
-</html>
+            // Closes the menu when a lin
