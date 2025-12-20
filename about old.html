@@ -396,72 +396,6 @@
                 margin-left: 0;
             }
         }
-    
-        /* ==========================================
-           VALUES DROPDOWNS (accordion)
-           ========================================== */
-
-        .value-item {
-            overflow: hidden; /* keeps animation clean */
-        }
-
-        .value-header {
-            width: 100%;
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-align: left;
-            font-family: inherit;
-        }
-
-        .value-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
-            color: var(--navy-blue);
-            font-weight: 600;
-            line-height: 1.2;
-            flex: 1;
-        }
-
-        .value-arrow {
-            font-size: 1.2rem;
-            color: var(--medium-blue);
-            transition: transform 0.25s ease;
-            margin-left: 0.5rem;
-        }
-
-        .value-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease;
-        }
-
-        .value-item.open .value-content {
-            max-height: 500px; /* safe for longer text */
-        }
-
-        .value-item.open .value-arrow {
-            transform: rotate(180deg);
-        }
-
-        /* keep your paragraph styling + indentation */
-        .value-content p {
-            color: var(--text-gray);
-            line-height: 1.8;
-            margin: 1rem 0 0 3rem;
-        }
-
-        /* Mobile: remove left indent */
-        @media (max-width: 768px) {
-            .value-content p {
-                margin-left: 0;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -534,103 +468,59 @@
 
         <p>Lastly, writing is not just something I teach. I practice writing daily. I am Editor-in-Chief of two Yale publications and write a weekly personal essay column for the Yale Daily News. This work informs how I mentor students.</p>
 
-        <!-- Values Section (DROPDOWNS) -->
+        <!-- Values Section -->
         <div class="values-section">
             <h2>My Values</h2>
-
             <div class="values-grid">
-
                 <div class="value-item">
-                    <button class="value-header" type="button">
-                        <span class="value-number">1</span>
-                        <span class="value-title">Long-term mentorship, not transactional help</span>
-                        <span class="value-arrow" aria-hidden="true">▾</span>
-                    </button>
-                    <div class="value-content">
-                        <p>I build lasting relationships with students and families. College admissions is not a one-off task. Rather, it's a formative process. I stay invested throughout the journey and beyond, offering continuity, trust, and guidance when it matters most.</p>
-                    </div>
+                    <span class="value-number">1</span>
+                    <h3>Long-term mentorship, not transactional help</h3>
+                    <p>I build lasting relationships with students and families. College admissions is not a one-off task. Rather, it's a formative process. I stay invested throughout the journey and beyond, offering continuity, trust, and guidance when it matters most.</p>
+                </div>
+                
+                <div class="value-item">
+                    <span class="value-number">2</span>
+                    <h3>Care for the whole person</h3>
+                    <p>The admissions process is stressful, emotional, and deeply personal. I create a judgment-free space where students can think out loud, be honest, and feel heard. Nothing you say is "too much" or off-limits. I am here to listen and support you through the full experience.</p>
                 </div>
 
                 <div class="value-item">
-                    <button class="value-header" type="button">
-                        <span class="value-number">2</span>
-                        <span class="value-title">Care for the whole person</span>
-                        <span class="value-arrow" aria-hidden="true">▾</span>
-                    </button>
-                    <div class="value-content">
-                        <p>The admissions process is stressful, emotional, and deeply personal. I create a judgment-free space where students can think out loud, be honest, and feel heard. Nothing you say is "too much" or off-limits. I am here to listen and support you through the full experience.</p>
-                    </div>
+                    <span class="value-number">3</span>
+                    <h3>A holistic view of the application</h3>
+                    <p>I don't work on essays in isolation. Every part of the application connects: activities, supplements, voice, structure, and story. I approach the application as a whole, fitting the pieces together thoughtfully so everything works in harmony.</p>
                 </div>
 
                 <div class="value-item">
-                    <button class="value-header" type="button">
-                        <span class="value-number">3</span>
-                        <span class="value-title">A holistic view of the application</span>
-                        <span class="value-arrow" aria-hidden="true">▾</span>
-                    </button>
-                    <div class="value-content">
-                        <p>I don't work on essays in isolation. Every part of the application connects: activities, supplements, voice, structure, and story. I approach the application as a whole, fitting the pieces together thoughtfully so everything works in harmony.</p>
-                    </div>
+                    <span class="value-number">4</span>
+                    <h3>Honesty</h3>
+                    <p>I am direct and honest in my feedback. When something needs to be reworked, I will tell you and we will work together until it's right. Critique is never vague or discouraging. Every piece of feedback comes with clear, actionable steps and a concrete plan forward.</p>
                 </div>
 
                 <div class="value-item">
-                    <button class="value-header" type="button">
-                        <span class="value-number">4</span>
-                        <span class="value-title">Honesty</span>
-                        <span class="value-arrow" aria-hidden="true">▾</span>
-                    </button>
-                    <div class="value-content">
-                        <p>I am direct and honest in my feedback. When something needs to be reworked, I will tell you and we will work together until it's right. Critique is never vague or discouraging. Every piece of feedback comes with clear, actionable steps and a concrete plan forward.</p>
-                    </div>
+                    <span class="value-number">5</span>
+                    <h3>Specific, actionable guidance</h3>
+                    <p>I never leave students with general comments or uncertainty. Feedback is detailed, specific, and solution-oriented. My students and I form a team. We set clear goals, track progress, and adjust strategy as needed so students always know what they're working toward and why.</p>
                 </div>
 
                 <div class="value-item">
-                    <button class="value-header" type="button">
-                        <span class="value-number">5</span>
-                        <span class="value-title">Specific, actionable guidance</span>
-                        <span class="value-arrow" aria-hidden="true">▾</span>
-                    </button>
-                    <div class="value-content">
-                        <p>I never leave students with general comments or uncertainty. Feedback is detailed, specific, and solution-oriented. My students and I form a team. We set clear goals, track progress, and adjust strategy as needed so students always know what they're working toward and why.</p>
-                    </div>
+                    <span class="value-number">6</span>
+                    <h3>Substance and style matter equally</h3>
+                    <p>Strong writing requires both. I focus not only on how something is written, but on what is being said. Ideas, arguments, and insight matter just as much as polish. I strengthen both content and craft.</p>
                 </div>
 
                 <div class="value-item">
-                    <button class="value-header" type="button">
-                        <span class="value-number">6</span>
-                        <span class="value-title">Substance and style matter equally</span>
-                        <span class="value-arrow" aria-hidden="true">▾</span>
-                    </button>
-                    <div class="value-content">
-                        <p>Strong writing requires both. I focus not only on how something is written, but on what is being said. Ideas, arguments, and insight matter just as much as polish. I strengthen both content and craft.</p>
-                    </div>
+                    <span class="value-number">7</span>
+                    <h3>Voice comes from knowing you</h3>
+                    <p>I spend time getting to know students as people through conversation, reflection, and trust. Understanding your personality, values, passions, and way of thinking allows us to help you present yourself authentically and confidently.</p>
                 </div>
 
                 <div class="value-item">
-                    <button class="value-header" type="button">
-                        <span class="value-number">7</span>
-                        <span class="value-title">Voice comes from knowing you</span>
-                        <span class="value-arrow" aria-hidden="true">▾</span>
-                    </button>
-                    <div class="value-content">
-                        <p>I spend time getting to know students as people through conversation, reflection, and trust. Understanding your personality, values, passions, and way of thinking allows us to help you present yourself authentically and confidently.</p>
-                    </div>
+                    <span class="value-number">8</span>
+                    <h3>Growth beyond admissions</h3>
+                    <p>College admissions is a beginning, not an endpoint. The skills built here—self-knowledge, clear thinking, strong writing, and confidence—carry forward into college and life beyond it. This work lays a foundation for future opportunities, not just acceptances.</p>
                 </div>
-
-                <div class="value-item">
-                    <button class="value-header" type="button">
-                        <span class="value-number">8</span>
-                        <span class="value-title">Growth beyond admissions</span>
-                        <span class="value-arrow" aria-hidden="true">▾</span>
-                    </button>
-                    <div class="value-content">
-                        <p>College admissions is a beginning, not an endpoint. The skills built here—self-knowledge, clear thinking, strong writing, and confidence—carry forward into college and life beyond it. This work lays a foundation for future opportunities, not just acceptances.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
-</div>
     </section>
 
     <!-- Footer -->
@@ -656,16 +546,7 @@
                 document.querySelector('.hamburger').classList.remove('active');
                 document.querySelector('.nav-links').classList.remove('active');
             }
-        
-
-            // VALUES DROPDOWNS
-            document.querySelectorAll('.value-header').forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    const item = btn.closest('.value-item');
-                    item.classList.toggle('open');
-                });
-            });
-</script>
+        </script>
 
 </body>
 </html>
