@@ -133,6 +133,83 @@
             width: 100%;
         }
 
+            /* ==========================================
+           MOBILE HAMBURGER MENU - NEW CODE ADDED
+           ========================================== */
+        
+        /* The hamburger icon (3 lines) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--deep-blue);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animation when hamburger is clicked - turns into X */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* Mobile styles - only applies on screens 768px or smaller */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            /* Show the hamburger on mobile */
+            .hamburger {
+                display: flex;
+            }
+
+            /* Mobile menu - slides in from right */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            }
+
+            /* When menu is open, slide it in */
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+        }
+        /* END OF MOBILE HAMBURGER MENU CODE */
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -266,8 +343,9 @@
         }
 
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2.5rem;
             position: relative;
             z-index: 1;
@@ -275,23 +353,21 @@
             margin: 0 auto;
         }
 
-        .features-grid .feature-card:nth-child(4),
-        .features-grid .feature-card:nth-child(5) {
-            grid-column: span 1;
+        .features-grid .feature-card {
+            flex: 0 1 calc(33.333% - 2rem);
+            min-width: 300px;
         }
 
-        .features-grid-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        @media (max-width: 1000px) {
+            .features-grid .feature-card {
+                flex: 0 1 calc(50% - 1.5rem);
+            }
         }
 
-        .features-row-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-            max-width: 800px;
-            margin: 2.5rem auto 0;
+        @media (max-width: 700px) {
+            .features-grid .feature-card {
+                flex: 0 1 100%;
+            }
         }
 
         .feature-card {
@@ -511,10 +587,7 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
+       
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -565,22 +638,261 @@
             background: linear-gradient(90deg, transparent, var(--medium-blue), transparent);
             margin: 0;
         }
+
+        /* Screenshot Collage Section */
+        .screenshot-collage {
+            background: linear-gradient(180deg, #4A90E2 0%, #87CEEB 100%);
+            padding: 5rem 2rem;
+        }
+
+        .screenshot-collage .section-title {
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        /* Phone Messages Grid */
+        .phone-messages-grid {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            column-count: 3;
+            column-gap: 20px;
+            padding: 1rem;
+        }
+
+        .phone-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .phone-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .phone-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Email Screenshots - Full Width for Readability */
+        .email-section-title {
+            text-align: center;
+            color: white;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            margin: 2rem 0;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .email-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding: 1rem;
+        }
+
+        .email-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+        }
+
+        .email-item:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .email-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .phone-messages-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .phone-messages-grid {
+                column-count: 1;
+            }
+        }
+
+        /* Get Started CTA Section */
+        .get-started-cta {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--light-sky) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .get-started-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--warm-yellow), transparent);
+        }
+
+        .cta-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-headline {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            color: var(--navy-blue);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-subtext {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--navy-blue) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(30, 58, 95, 0.3);
+        }
+
+        .cta-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 58, 95, 0.4);
+        }
+
+        .cta-btn-secondary {
+            background: white;
+            color: var(--deep-blue);
+            border: 2px solid var(--deep-blue);
+        }
+
+        .cta-btn-secondary:hover {
+            background: var(--deep-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .cta-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .cta-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .cta-contact a {
+            color: var(--deep-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .cta-contact a:hover {
+            color: var(--medium-blue);
+        }
+
+        .cta-contact span {
+            opacity: 0.5;
+        }
+
+        @media (max-width: 500px) {
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .cta-contact {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .cta-contact span {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-        <!-- Navigation -->
-        <nav>
-            <div class="container">
-                <a href="index.html" class="logo">Your Admissions Mentor</a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="get-started.html">Get Started</a></li>
-                </ul>
-            </div>
-        </nav>
-
+          <!-- Navigation -->
+        <!-- ==========================================
+             CHANGED: Added hamburger div with 3 spans
+             and onclick handlers to nav links
+             ========================================== -->
+             <nav>
+                <div class="container">
+                    <a href="index.html" class="logo">Your Admissions Mentor</a>
+                    
+                    <!-- NEW: Hamburger button (3 lines) - only shows on mobile -->
+                    <div class="hamburger" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    
+                    <ul class="nav-links">
+                        <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+                        <li><a href="about.html" onclick="closeMenu()">About</a></li>
+                        <li><a href="testimonials.html" onclick="closeMenu()">Testimonials</a></li>
+                        <li><a href="get-started.html" onclick="closeMenu()">Get Started</a></li>
+                    </ul>
+                </div>
+            </nav>
+    
+            
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
@@ -623,6 +935,32 @@
 
     <div class="section-divider"></div>
 
+       <!-- Get Started CTA -->
+       <section class="get-started-cta">
+        <div class="cta-inner scroll-reveal">
+            <h2 class="cta-headline">Ready to Begin Your Journey?</h2>
+            <p class="cta-subtext">Let's work together to craft your path to your dream school.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/madison-d-butchko/intake-your-college-admissions-mentor" target="_blank" class="cta-btn cta-btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                    Schedule a Free Meeting
+                </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSduoBkEIEocldx_nc81VZ9i-hqDVDj0dAtnP23RP-XR7j4XOA/viewform?usp=header" target="_blank" class="cta-btn cta-btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    Fill Out Intake Form
+                </a>
+            </div>
+            <div class="cta-contact">
+                <a href="mailto:madison.d.butchko@gmail.com">madison.d.butchko@gmail.com</a>
+                <span>•</span>
+                <a href="tel:248-212-3123">248-212-3123</a>
+                <span>•</span>
+                <span style="opacity: 1;">Text & email welcome</span>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
         <div class="container">
@@ -641,6 +979,69 @@
                 <div class="testimonial-item scroll-reveal">
                     <p class="testimonial-text">I had Maddie edit three of my essays for my UMICH application and I am SO thankful to have found her. Maddie made so many edits on my essays making them top-notch and error-free. Some edits she made were things like word choice, tenses, sentence structure, overall structure, word count and so much more. Not only did she edit my essays, but she also created videos describing how to fix my essay and videos explaining how to write certain supplementals. This was very beneficial in many ways and gave me a good idea of what to fix and where to start. The advice she gave was great and I could tell she knows a lot about the application process and how to make your essay show who you are as a person. Maddie also helped me right up until the minute before my application was due, literally. I cannot thank her enough for all of her help and I can proudly say I am confident with my application solely because of my essays. Maddie is a very hard-worker and a pro at what she does!</p>
                     <p class="testimonial-author">— Natalie (Accepted into UMICH)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Screenshot Collage Section -->
+    <section class="screenshot-collage">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Real Messages from Real Students</h2>
+            
+            <!-- Phone Messages - 3 column masonry -->
+            <div class="phone-messages-grid scroll-reveal">
+                <div class="phone-item">
+                    <img src="1.png" alt="Student message">
+                </div>
+                <div class="phone-item">
+                    <img src="2.png" alt="Student message">
+                </div>
+                <div class="phone-item">
+                    <img src="3.png" alt="Student message">
+                </div>
+                <div class="phone-item">
+                    <img src="4.png" alt="Student message">
+                </div>
+                <div class="phone-item">
+                    <img src="5.png" alt="Student message">
+                </div>
+                <div class="phone-item">
+                    <img src="6.png" alt="Student message">
+                </div>
+                <div class="phone-item">
+                    <img src="7.png" alt="Student message">
+                </div>
+                <div class="phone-item">
+                    <img src="8.png" alt="Student message">
+                </div>
+                <div class="phone-item">
+                    <img src="9.png" alt="Student message">
+                </div>
+                <div class="phone-item">
+                    <img src="10.png" alt="Student message">
+                </div>
+            </div>
+
+            <!-- Email Screenshots - Full width for readability -->
+            <h3 class="email-section-title scroll-reveal">More Success Stories</h3>
+            <div class="email-grid scroll-reveal">
+                <div class="email-item">
+                    <img src="11.png" alt="Email testimonial">
+                </div>
+                <div class="email-item">
+                    <img src="12.png" alt="Email testimonial">
+                </div>
+                <div class="email-item">
+                    <img src="13.png" alt="Email testimonial">
+                </div>
+                <div class="email-item">
+                    <img src="14.png" alt="Email testimonial">
+                </div>
+                <div class="email-item">
+                    <img src="15.png" alt="Email testimonial">
                 </div>
             </div>
         </div>
@@ -669,27 +1070,33 @@
                     <div class="university-item">Brown University</div>
                     <div class="university-item">University of California, Berkeley</div>
                     <div class="university-item">University of California, Los Angeles (UCLA)</div>
-
-
-
-                </div>
-            </div>
-
-            <!-- Top 20 Universities -->
-            <div class="university-category scroll-reveal">
-                <h3 class="category-label">Top 20 Universities</h3>
-                <div class="university-grid">
                     <div class="university-item">University of Michigan</div>
                     <div class="university-item">University of Southern California</div>
                     <div class="university-item">Northwestern University</div>
                     <div class="university-item">Vanderbilt University</div>
                     <div class="university-item">Rice University</div>
+
+
+                </div>
+            </div>
+
+            <!-- Top 40 Universities -->
+            <div class="university-category scroll-reveal">
+                <h3 class="category-label">Other Top Universities</h3>
+                <div class="university-grid">
                     <div class="university-item">Emory University</div>
                     <div class="university-item">University of California, San Diego (UCSD) </div>
                     <div class="university-item">University of California, Davis </div>
                     <div class="university-item">University of California, Irvine (UCI)</div>
                     <div class="university-item">University of California, Santa Barbara (UCSB) </div>
-                    <div class="university-item">University of California, Santa Cruz (UCSC)) </div>
+                    <div class="university-item">University of California, Santa Cruz (UCSC) </div>
+                    <div class="university-item">Indiana University</div>
+                    <div class="university-item">University of Virginia</div>
+                    <div class="university-item">Northeastern University</div>
+                    <div class="university-item">UT Austin</div>
+                    <div class="university-item">Purude University</div>
+                    <div class="university-item">Ohio State University</div>
+
 
                 </div>
             </div>
@@ -709,14 +1116,14 @@
 
             <!-- Specialized Programs & Other Top Schools -->
             <div class="university-category scroll-reveal">
-                <h3 class="category-label">Specialized Programs & Engineering Schools</h3>
+                <h3 class="category-label">Specialized Programs & Schools</h3>
                 <div class="university-grid">
                     <div class="university-item">Duke Pratt School of Engineering</div>
                     <div class="university-item">Cornell University – College of Engineering</div>
                     <div class="university-item">University of Michigan – Ross School of Business</div>
                     <div class="university-item">University of Michigan – College of Engineering</div>
-                    <div class="university-item">Georgia Institute of Technology</div>
                     <div class="university-item">Indiana University – Kelley School of Business</div>
+                    <div class="university-item">Georgia Institute of Technology</div>
                     <div class="university-item">University of Virginia</div>
                     <div class="university-item">Virginia Tech</div>
                     <div class="university-item">Northeastern University</div>
@@ -739,6 +1146,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer>
@@ -802,5 +1210,25 @@
             lastScrollTop = scrollTop;
         }, false);
     </script>
+
+     <!-- ==========================================
+         NEW: JavaScript for mobile menu toggle
+         Add this right before </body>
+         ========================================== -->
+         <script>
+            // Opens/closes the mobile menu
+            function toggleMenu() {
+                document.querySelector('.hamburger').classList.toggle('active');
+                document.querySelector('.nav-links').classList.toggle('active');
+            }
+            
+            // Closes the menu when a link is clicked
+            function closeMenu() {
+                document.querySelector('.hamburger').classList.remove('active');
+                document.querySelector('.nav-links').classList.remove('active');
+            }
+        </script>
+
+
 </body>
 </html>

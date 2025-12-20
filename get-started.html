@@ -111,6 +111,83 @@
             width: 100%;
         }
 
+        /* ==========================================
+           MOBILE HAMBURGER MENU - NEW CODE ADDED
+           ========================================== */
+        
+        /* The hamburger icon (3 lines) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--deep-blue);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animation when hamburger is clicked - turns into X */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* Mobile styles - only applies on screens 768px or smaller */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            /* Show the hamburger on mobile */
+            .hamburger {
+                display: flex;
+            }
+
+            /* Mobile menu - slides in from right */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            }
+
+            /* When menu is open, slide it in */
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+        }
+        /* END OF MOBILE HAMBURGER MENU CODE */
+
         /* Get Started Hero */
         .get-started-hero {
             margin-top: 70px;
@@ -311,9 +388,7 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+            /* REMOVED: .nav-links display:none - this was hiding the menu! */
             
             .process-steps,
             .services-grid {
@@ -324,14 +399,26 @@
 </head>
 <body>
         <!-- Navigation -->
+        <!-- ==========================================
+             CHANGED: Added hamburger div with 3 spans
+             and onclick handlers to nav links
+             ========================================== -->
         <nav>
             <div class="container">
                 <a href="index.html" class="logo">Your Admissions Mentor</a>
+                
+                <!-- NEW: Hamburger button (3 lines) - only shows on mobile -->
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="get-started.html">Get Started</a></li>
+                    <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+                    <li><a href="about.html" onclick="closeMenu()">About</a></li>
+                    <li><a href="testimonials.html" onclick="closeMenu()">Testimonials</a></li>
+                    <li><a href="get-started.html" onclick="closeMenu()">Get Started</a></li>
                 </ul>
             </div>
         </nav>
@@ -471,17 +558,40 @@
         <p>Let's work together to craft applications that truly represent who you are.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSduoBkEIEocldx_nc81VZ9i-hqDVDj0dAtnP23RP-XR7j4XOA/viewform?usp=header" target="_blank" class="cta-button">Complete Intake Form</a>
         <div class="contact-info">
-            <p>Email: madison.d.butchko@gmail.com</p>
+            <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="315c505558425e5f1f551f53444552595a5e71565c50585d1f525e5c">[email&#160;protected]</a></p>
             <p>Response within 24 hours</p>
             <p style="margin-top: 1rem;">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSduoBkEIEocldx_nc81VZ9i-hqDVDj0dAtnP23RP-XR7j4XOA/viewform?usp=header" 
                    target="_blank" 
                    style="color: var(--soft-yellow); text-decoration: underline;">
-                    Or click here to fill out the inquiry form
-                </a>
+                    Or click here to fill out the intake form</a>
             </p>
         </div>
     </section>
 
     <!-- Footer -->
-    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Admissions Mentor. Expert guidance for elite college admissions.</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         NEW: JavaScript for mobile menu toggle
+         Add this right before </body>
+         ========================================== -->
+    <script>
+        // Opens/closes the mobile menu
+        function toggleMenu() {
+            document.querySelector('.hamburger').classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+        
+        // Closes the menu when a link is clicked
+        function closeMenu() {
+            document.querySelector('.hamburger').classList.remove('active');
+            document.querySelector('.nav-links').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
