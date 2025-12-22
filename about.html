@@ -264,7 +264,123 @@
             font-size: 1.15rem;
             line-height: 1.9;
             color: var(--text-gray);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Hero CTA Section */
+        .hero-cta-section {
+            border-top: 1px solid rgba(46, 92, 138, 0.15);
+            padding-top: 2rem;
+            margin-top: 1rem;
+        }
+
+        .hero-cta-tagline {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .hero-cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+            justify-content: center;
+        }
+
+        .hero-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .hero-cta-btn-primary {
+            background: var(--navy-blue);
+            color: white;
+        }
+
+        .hero-cta-btn-primary:hover {
+            background: var(--deep-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(30, 58, 95, 0.3);
+        }
+
+        .hero-cta-btn-secondary {
+            background: white;
+            color: var(--deep-blue);
+            border: 1.5px solid var(--deep-blue);
+        }
+
+        .hero-cta-btn-secondary:hover {
+            background: var(--light-sky);
+            transform: translateY(-2px);
+        }
+
+        .hero-contact-info {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            justify-content: center;
+        }
+
+        .hero-contact-info a {
+            color: var(--deep-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .hero-contact-info a:hover {
+            color: var(--medium-blue);
+            text-decoration: underline;
+        }
+
+        .hero-contact-info .separator {
+            color: var(--text-gray);
+            opacity: 0.4;
+            margin: 0 0.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-cta-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .hero-cta-btn {
+                width: 100%;
+                max-width: 260px;
+                justify-content: center;
+            }
+
+            .hero-contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+            }
+
+            .hero-contact-info .separator {
+                display: none;
+            }
         }
 
         /* Stats Row */
@@ -518,17 +634,25 @@
             font-style: italic;
         }
 
+        .cta-buttons-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
         .cta-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.6rem;
-            padding: 1rem 2.5rem;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
             background: linear-gradient(135deg, var(--deep-blue) 0%, var(--navy-blue) 100%);
             color: white;
             border-radius: 50px;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-decoration: none;
             box-shadow: 0 4px 20px rgba(30, 58, 95, 0.3);
             transition: all 0.3s ease;
@@ -537,6 +661,74 @@
         .cta-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 30px rgba(30, 58, 95, 0.4);
+        }
+
+        .cta-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .cta-btn-secondary {
+            background: white;
+            color: var(--deep-blue);
+            border: 1.5px solid var(--deep-blue);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-btn-secondary:hover {
+            background: var(--light-sky);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .cta-contact-info a {
+            color: var(--deep-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .cta-contact-info a:hover {
+            color: var(--medium-blue);
+            text-decoration: underline;
+        }
+
+        .cta-contact-info .separator {
+            color: var(--text-gray);
+            opacity: 0.4;
+            margin: 0 0.3rem;
+        }
+
+        @media (max-width: 600px) {
+            .cta-buttons-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 260px;
+                justify-content: center;
+            }
+
+            .cta-contact-info {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .cta-contact-info .separator {
+                display: none;
+            }
         }
 
         /* Footer */
@@ -642,6 +834,29 @@
                 <h1>Hi, I'm Maddie!</h1>
                 <p class="subtitle">Yale Senior · Physics & East Asian Studies</p>
                 <p class="intro">I grew up in suburban Michigan outside of Detroit and went through the college admissions process largely on my own, without formal guidance. I was accepted to seven Top 20 universities, including Yale, Duke, Cornell Engineering, the University of Michigan, Northwestern, and USC. After my acceptances, I began helping friends and students on Reddit edit their college essays, which quickly grew into hundreds of requests after my posts went viral. Seeing how meaningful that support was, I realized my passion was listening to students' stories and providing the mentorship I once wished I had.</p>
+                
+                <div class="hero-cta-section">
+                    <p class="hero-cta-tagline">I'm always happy to answer questions and help however I can.</p>
+                    
+                    <div class="hero-cta-buttons">
+                        <a href="https://calendly.com/madison-d-butchko/intake-your-college-admissions-mentor" target="_blank" class="hero-cta-btn hero-cta-btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                            Schedule a Free Meeting
+                        </a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSduoBkEIEocldx_nc81VZ9i-hqDVDj0dAtnP23RP-XR7j4XOA/viewform?usp=header" target="_blank" class="hero-cta-btn hero-cta-btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                            Fill Out Intake Form
+                        </a>
+                    </div>
+                    
+                    <div class="hero-contact-info">
+                        <a href="mailto:Madison.d.butchko@gmail.com,youradmissionsmentor@gmail.com">Madison.d.butchko@gmail.com</a>
+                        <span class="separator">·</span>
+                        <a href="mailto:Madison.d.butchko@gmail.com,youradmissionsmentor@gmail.com">youradmissionsmentor@gmail.com</a>
+                        <span class="separator">·</span>
+                        <a href="tel:248-212-3123">248-212-3123</a>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -735,10 +950,23 @@
     <section class="cta-section">
         <h2>Ready to Work Together?</h2>
         <p>Let's craft your path to your dream school.</p>
-        <a href="get-started.html" class="cta-btn">
-            Get Started
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <div class="cta-buttons-row">
+            <a href="https://calendly.com/madison-d-butchko/intake-your-college-admissions-mentor" target="_blank" class="cta-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                Schedule a Free Meeting
+            </a>
+            <a href="get-started.html" class="cta-btn cta-btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Get Started
+            </a>
+        </div>
+        <div class="cta-contact-info">
+            <a href="mailto:Madison.d.butchko@gmail.com,youradmissionsmentor@gmail.com">Madison.d.butchko@gmail.com</a>
+            <span class="separator">·</span>
+            <a href="mailto:Madison.d.butchko@gmail.com,youradmissionsmentor@gmail.com">youradmissionsmentor@gmail.com</a>
+            <span class="separator">·</span>
+            <a href="tel:248-212-3123">248-212-3123</a>
+        </div>
     </section>
 
     <!-- Footer -->
