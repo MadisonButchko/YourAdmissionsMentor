@@ -471,8 +471,32 @@
         }
 
         .about-me-container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-me-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 10px 40px rgba(46, 92, 138, 0.2);
+            flex-shrink: 0;
+        }
+
+        .about-me-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .about-me-content {
             text-align: center;
         }
 
@@ -998,6 +1022,17 @@
             .university-grid {
                 grid-template-columns: 1fr;
             }
+
+            .about-me-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-me-photo {
+                width: 180px;
+                height: 180px;
+                margin: 0 auto;
+            }
         }
 
         /* Scroll Reveal Animation */
@@ -1347,37 +1382,42 @@
     <!-- About Me Section -->
     <section class="about-me-section">
         <div class="about-me-container scroll-reveal">
-            <h2 class="about-me-intro">Hi, I'm Maddie!</h2>
-            <p class="about-me-text">
-                I'm a senior at Yale University majoring in Physics and East Asian Studies. With over five years of experience in college admissions mentorship and essay editing, I've had the privilege of working with more than 500 students worldwide and editing 2,000+ essays. My passion is helping students find their authentic voice and craft applications that truly stand out.
-            </p>
-            
-            <div class="stats-box">
-                <div class="stat-item">
-                    <div class="stat-number">2,000+</div>
-                    <div class="stat-label">Essays Edited</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Students Mentored</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">6</div>
-                    <div class="stat-label">Continents</div>
-                </div>
+            <div class="about-me-photo">
+                <img src="maddie-index.jpg" alt="Maddie - Your Admissions Mentor">
             </div>
-            
-            <div class="about-me-buttons">
-                <a href="about.html" class="about-btn about-btn-secondary">
-                    Learn More About Me
-                </a>
-                <a href="get-started.html" class="about-btn about-btn-primary">
-                    Get Started Today
-                </a>
+            <div class="about-me-content">
+                <h2 class="about-me-intro">Hi, I'm Maddie!</h2>
+                <p class="about-me-text">
+                    I'm a senior at Yale University majoring in Physics and East Asian Studies. With over five years of experience in college admissions mentorship and essay editing, I've had the privilege of working with more than 500 students worldwide and editing 2,000+ essays. My passion is helping students find their authentic voice and craft applications that truly stand out.
+                </p>
+                
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <div class="stat-number">2,000+</div>
+                        <div class="stat-label">Essays Edited</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Students Mentored</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Continents</div>
+                    </div>
+                </div>
+                
+                <div class="about-me-buttons">
+                    <a href="about.html" class="about-btn about-btn-secondary">
+                        Learn More About Me
+                    </a>
+                    <a href="get-started.html" class="about-btn about-btn-primary">
+                        Get Started Today
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1400,9 +1440,9 @@
                 </a>
             </div>
             <div class="cta-contact">
-                <a href="mailto:Madison.d.butchko@gmail.com,youradmissionsmentor@gmail.com">Madison.d.butchko@gmail.com</a>
+                <a href="/cdn-cgi/l/email-protection#95d8f4f1fce6fafbbbf1bbf7e0e1f6fdfefad5f2f8f4fcf9bbf6faf8b9ecfae0e7f4f1f8fce6e6fcfafbe6f8f0fbe1fae7d5f2f8f4fcf9bbf6faf8"><span class="__cf_email__" data-cfemail="307d515459435f5e1e541e52454453585b5f70575d51595c1e535f5d">[email&#160;protected]</span></a>
                 <span class="separator">•</span>
-                <a href="mailto:Madison.d.butchko@gmail.com,youradmissionsmentor@gmail.com">youradmissionsmentor@gmail.com</a>
+                <a href="/cdn-cgi/l/email-protection#d499b5b0bda7bbbafab0fab6a1a0b7bcbfbb94b3b9b5bdb8fab7bbb9f8adbba1a6b5b0b9bda7a7bdbbbaa7b9b1baa0bba694b3b9b5bdb8fab7bbb9"><span class="__cf_email__" data-cfemail="97eef8e2e5f6f3fafee4e4fef8f9e4faf2f9e3f8e5d7f0faf6fefbb9f4f8fa">[email&#160;protected]</span></a>
                 <span class="separator">•</span>
                 <a href="tel:248-212-3123">248-212-3123</a>
                 <span class="separator">•</span>
@@ -1650,7 +1690,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1721,16 +1761,4 @@
         }
     </script>
 
-     
-    <!-- ==========================================
-         Mobile menu toggle (fixed)
-         ========================================== -->
-    <script>
-        // Opens/closes the mobile menu
-        function toggleMenu() {
-            document.querySelector('.hamburger').classList.toggle('active');
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
-
-        // Closes the menu when a nav link is clicked (mobile)
-        function
+    
