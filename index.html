@@ -1754,55 +1754,40 @@
             }
         });
 
-        // Add hover effect to navigation on scroll
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const nav = document.querySelector('nav');
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                nav.style.transform = 'translateY(-100%)';
-            } else {
-                nav.style.transform = 'translateY(0)';
-            }
-            
-            lastScrollTop = scrollTop;
-        }, false);
-
-        // Toggle feature card dropdown
-        function toggleFeature(card) {
-            card.classList.toggle('open');
-        }
-
-        // Toggle university category dropdown
-        function toggleUniversity(category) {
-            category.classList.toggle('open');
-        }
-
-        // Toggle testimonial accordion
-        function toggleTestimonial(item) {
-            item.classList.toggle('open');
-        }
-    </script>
+// NEW for tab dropdown //////////////////////////////////////////////////////////
 
 <script>
-    // Opens/closes the mobile menu
-    function toggleMenu() {
-      document.querySelector('.hamburger')?.classList.toggle('active');
-      document.querySelector('.nav-links')?.classList.toggle('active');
+  // Add hover effect to navigation on scroll (desktop-safe, mobile-safe)
+  let lastScrollTop = 0;
+  window.addEventListener('scroll', function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const nav = document.querySelector('nav');
+    const menuOpen = document
+      .querySelector('.nav-links')
+      ?.classList.contains('active');
+
+    // Do NOT hide nav if mobile menu is open
+    if (!menuOpen && scrollTop > lastScrollTop && scrollTop > 100) {
+      nav.style.transform = 'translateY(-100%)';
+    } else {
+      nav.style.transform = 'translateY(0)';
     }
-  
-    // Closes the menu (used by your nav link onclick="closeMenu()")
-    function closeMenu() {
-      document.querySelector('.hamburger')?.classList.remove('active');
-      document.querySelector('.nav-links')?.classList.remove('active');
-    }
-  
-    // Optional: if someone rotates their phone / resizes bigger, force-close mobile menu
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) closeMenu();
-    });
-  </script>
-  </body>
-  </html>
-  
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  }, false);
+
+  // Toggle feature card dropdown
+  function toggleFeature(card) {
+    card.classList.toggle('open');
+  }
+
+  // Toggle university category dropdown
+  function toggleUniversity(category) {
+    category.classList.toggle('open');
+  }
+
+  // Toggle testimonial accordion
+  function toggleTestimonial(item) {
+    item.classList.toggle('open');
+  }
+</script>
