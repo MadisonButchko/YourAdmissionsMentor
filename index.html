@@ -1220,25 +1220,35 @@
         .cta-contact {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            align-items: center;
+            gap: 1.5rem;
             flex-wrap: wrap;
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            color: var(--text-gray);
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
         }
 
         .cta-contact a {
             color: var(--deep-blue);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-weight: 500;
         }
 
         .cta-contact a:hover {
             color: var(--medium-blue);
+            text-decoration: underline;
         }
 
-        .cta-contact span {
-            opacity: 0.5;
+        .cta-contact span.separator {
+            color: var(--deep-blue);
+            opacity: 0.6;
+        }
+
+        .cta-contact .contact-note {
+            color: var(--text-dark);
+            opacity: 0.9;
         }
 
         @media (max-width: 500px) {
@@ -1255,10 +1265,11 @@
             
             .cta-contact {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0.75rem;
+                text-align: center;
             }
             
-            .cta-contact span {
+            .cta-contact span.separator {
                 display: none;
             }
         }
@@ -1355,8 +1366,8 @@
                     <div class="stat-label">Years Experience</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">25</div>
-                    <div class="stat-label">States</div>
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Continents</div>
                 </div>
             </div>
             
@@ -1389,11 +1400,13 @@
                 </a>
             </div>
             <div class="cta-contact">
-                <a href="/cdn-cgi/l/email-protection#b3ded2d7dac0dcdd9dd79dd1c6c7d0dbd8dcf3d4ded2dadf9dd0dcde"><span class="__cf_email__" data-cfemail="2c414d48455f43420248024e59584f4447436c4b414d4540024f4341">[<span class="__cf_email__" data-cfemail="e58884818c968a8bcb81cb879091868d8e8aa58288848c89cb868a88">Madison.d.butchko@gmail.com, youradmissionsmentor@gmail.com</span></a>
-                <span>•</span>
+                <a href="mailto:Madison.d.butchko@gmail.com,youradmissionsmentor@gmail.com">Madison.d.butchko@gmail.com</a>
+                <span class="separator">•</span>
+                <a href="mailto:Madison.d.butchko@gmail.com,youradmissionsmentor@gmail.com">youradmissionsmentor@gmail.com</a>
+                <span class="separator">•</span>
                 <a href="tel:248-212-3123">248-212-3123</a>
-                <span>•</span>
-                <span style="opacity: 1;">Text & email welcome</span>
+                <span class="separator">•</span>
+                <span class="contact-note">Text & email welcome</span>
             </div>
         </div>
     </section>
