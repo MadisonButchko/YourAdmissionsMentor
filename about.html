@@ -851,9 +851,9 @@
                     </div>
                     
                     <div class="hero-contact-info">
-                        <a href="/cdn-cgi/l/email-protection#dc91bdb8b5afb3b2f2b8f2bea9a8bfb4b7b39cbbb1bdb5b0f2bfb3b1f0a5b3a9aebdb8b1b5afafb5b3b2afb1b9b2a8b3ae9cbbb1bdb5b0f2bfb3b1"><span class="__cf_email__" data-cfemail="b7fad6d3dec4d8d999d399d5c2c3d4dfdcd8f7d0dad6dedb99d4d8da">[email&#160;protected]</span></a>
+                        <a href="/cdn-cgi/l/email-protection#dc91bdb8b5afb3b2f2b8f2bea9a8bfb4b7b39cbbb1bdb5b0f2bfb3b1f0a5b3a9aebdb8b1b5afafb5b3b2afb1b9b2a8b3ae9cbbb1bdb5b0f2bfb3b1"><span class="__cf_email__" data-cfemail="b7fad6d3dec4d8d999d399d5c2c3d4dfdcd8f7d0dad6dedb99d4d8da">madison.d.butchko@gmail.com</span></a>
                         <span class="separator">·</span>
-                        <a href="/cdn-cgi/l/email-protection#703d111419031f1e5e145e12050413181b1f30171d11191c5e131f1d5c091f050211141d190303191f1e031d151e041f0230171d11191c5e131f1d"><span class="__cf_email__" data-cfemail="91e8fee4e3f0f5fcf8e2e2f8feffe2fcf4ffe5fee3d1f6fcf0f8fdbff2fefc">[email&#160;protected]</span></a>
+                        <a href="/cdn-cgi/l/email-protection#703d111419031f1e5e145e12050413181b1f30171d11191c5e131f1d5c091f050211141d190303191f1e031d151e041f0230171d11191c5e131f1d"><span class="__cf_email__" data-cfemail="91e8fee4e3f0f5fcf8e2e2f8feffe2fcf4ffe5fee3d1f6fcf0f8fdbff2fefc">youradmissionsmentor@gmail.com</span></a>
                         <span class="separator">·</span>
                         <a href="tel:248-212-3123">248-212-3123</a>
                     </div>
@@ -897,7 +897,6 @@
                     <p>Writing is not just something I teach—I practice it daily. I am Editor-in-Chief of two Yale publications and write a weekly personal essay column for the Yale Daily News. This work informs how I mentor students.</p>
                     
                     </div>
-                </div>
 
                 <!-- Values Tab -->
                 <div id="values" class="tab-panel">
@@ -962,27 +961,67 @@
             </a>
         </div>
         <div class="cta-contact-info">
-            <a href="/cdn-cgi/l/email-protection#f7ba96939e849899d993d9958283949f9c98b7909a969e9bd994989adb8e98828596939a9e84849e9899849a9299839885b7909a969e9bd994989a"><span class="__cf_email__" data-cfemail="a8e5c9ccc1dbc7c686cc86cadddccbc0c3c7e8cfc5c9c1c486cbc7c5">[email&#160;protected]</span></a>
+            <a href="/cdn-cgi/l/email-protection#f7ba96939e849899d993d9958283949f9c98b7909a969e9bd994989adb8e98828596939a9e84849e9899849a9299839885b7909a969e9bd994989a"><span class="__cf_email__" data-cfemail="a8e5c9ccc1dbc7c686cc86cadddccbc0c3c7e8cfc5c9c1c486cbc7c5">madison.d.butchko@gmail.com</span></a>
             <span class="separator">·</span>
-            <a href="/cdn-cgi/l/email-protection#aee3cfcac7ddc1c080ca80ccdbdacdc6c5c1eec9c3cfc7c280cdc1c382d7c1dbdccfcac3c7ddddc7c1c0ddc3cbc0dac1dceec9c3cfc7c280cdc1c3"><span class="__cf_email__" data-cfemail="fa83958f889b9e9793898993959489979f948e9588ba9d979b9396d4999597">[email&#160;protected]</span></a>
+            <a href="/cdn-cgi/l/email-protection#aee3cfcac7ddc1c080ca80ccdbdacdc6c5c1eec9c3cfc7c280cdc1c382d7c1dbdccfcac3c7ddddc7c1c0ddc3cbc0dac1dceec9c3cfc7c280cdc1c3"><span class="__cf_email__" data-cfemail="fa83958f889b9e9793898993959489979f948e9588ba9d979b9396d4999597">youradmissionsmentor@gmail.com</span></a>
             <span class="separator">·</span>
             <a href="tel:248-212-3123">248-212-3123</a>
         </div>
     </section>
 
-    <!-- Footer -->
+        <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Your Admissions Mentor. Expert guidance for elite college admissions.</p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <!-- Cloudflare email decoder (required if you're using email-protection spans) -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+    <script>
         // Mobile menu toggle
         function toggleMenu() {
-            document.querySelector('.hamburger').classList.toggle('active');
-            document.querySelector('.nav-links').classList.toggle('active');
+            document.querySelector('.hamburger')?.classList.toggle('active');
+            document.querySelector('.nav-links')?.classList.toggle('active');
         }
-        
+
         function closeMenu() {
-            document.querySelector('.hamburger').classLi
+            document.querySelector('.hamburger')?.classList.remove('active');
+            document.querySelector('.nav-links')?.classList.remove('active');
+        }
+
+        // Tab functionality
+        function openTab(evt, tabName) {
+            // Hide all tab panels
+            const tabPanels = document.querySelectorAll('.tab-panel');
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+
+            // Show current tab and add active class to button
+            const panel = document.getElementById(tabName);
+            if (panel) panel.classList.add('active');
+            if (evt && evt.currentTarget) evt.currentTarget.classList.add('active');
+        }
+
+        // Optional: allow linking directly to a tab with #journey / #values / #teaching
+        document.addEventListener('DOMContentLoaded', () => {
+            const hash = (window.location.hash || '').replace('#', '').trim();
+            if (!hash) return;
+
+            const panel = document.getElementById(hash);
+            const btn = Array.from(document.querySelectorAll('.tab-btn'))
+                .find(b => (b.getAttribute('onclick') || '').includes("'" + hash + "'"));
+
+            if (panel && btn) {
+                // Simulate a click so styles match
+                openTab({ currentTarget: btn }, hash);
+            }
+        });
+    </script>
+
+</body>
+</html>
