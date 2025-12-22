@@ -461,6 +461,63 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .cta-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .cta-contact {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            margin-top: 1.5rem;
+        }
+
+        .cta-contact a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .cta-contact a:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+
+        .cta-contact .separator {
+            color: white;
+            opacity: 0.5;
+        }
+
+        .cta-contact .contact-note {
+            color: white;
+            opacity: 0.8;
+        }
+
         .cta-email {
             margin-top: 1.5rem;
             font-size: 1rem;
@@ -470,6 +527,28 @@
         .cta-email a {
             color: white;
             text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .cta-contact {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .cta-contact .separator {
+                display: none;
+            }
         }
 
         /* Footer */
@@ -1039,11 +1118,26 @@
     <section class="cta-section">
         <h3>Ready to Join These Success Stories?</h3>
         <p>Start your journey with personalized mentorship today</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSduoBkEIEocldx_nc81VZ9i-hqDVDj0dAtnP23RP-XR7j4XOA/viewform?usp=header" 
-           target="_blank" class="cta-btn">
-            Complete Intake Form
-        </a>
-        <p class="cta-email">Email: <a href="mailto:youradmissionsmentor@gmail.com">youradmissionsmentor@gmail.com</a></p>
+        <div class="cta-buttons">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSduoBkEIEocldx_nc81VZ9i-hqDVDj0dAtnP23RP-XR7j4XOA/viewform?usp=header" 
+               target="_blank" class="cta-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                Complete Intake Form
+            </a>
+            <a href="https://calendly.com/madison-d-butchko/intake-your-college-admissions-mentor" target="_blank" class="cta-btn cta-btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                Schedule a Free Meeting
+            </a>
+        </div>
+        <div class="cta-contact">
+            <a href="mailto:Madison.d.butchko@gmail.com,youradmissionsmentor@gmail.com">Madison.d.butchko@gmail.com</a>
+            <span class="separator">•</span>
+            <a href="mailto:Madison.d.butchko@gmail.com,youradmissionsmentor@gmail.com">youradmissionsmentor@gmail.com</a>
+            <span class="separator">•</span>
+            <a href="tel:248-212-3123">248-212-3123</a>
+            <span class="separator">•</span>
+            <span class="contact-note">Text & email welcome</span>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -1051,7 +1145,7 @@
         <p>© 2024 Your Admissions Mentor. All rights reserved.</p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Filter functionality
         const filterTabs = document.querySelectorAll('.filter-tab');
         const cards = document.querySelectorAll('.testimonial-card');
@@ -1118,12 +1212,4 @@
                 document.querySelector('.nav-links').classList.toggle('active');
             }
             
-            // Closes the menu when a link is clicked
-            function closeMenu() {
-                document.querySelector('.hamburger').classList.remove('active');
-                document.querySelector('.nav-links').classList.remove('active');
-            }
-        </script>
-
-</body>
-</html>
+            // Closes the menu when
