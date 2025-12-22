@@ -1201,15 +1201,24 @@
         });
     </script>
 
-      <!-- ==========================================
-         NEW: JavaScript for mobile menu toggle
-         Add this right before </body>
-         ========================================== -->
-         <script>
-            // Opens/closes the mobile menu
-            function toggleMenu() {
-                document.querySelector('.hamburger').classList.toggle('active');
-                document.querySelector('.nav-links').classList.toggle('active');
-            }
-            
-            // Closes the menu when
+<script>
+    // Opens/closes the mobile menu
+    function toggleMenu() {
+      document.querySelector('.hamburger')?.classList.toggle('active');
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    }
+  
+    // Closes the menu (used by your nav link onclick="closeMenu()")
+    function closeMenu() {
+      document.querySelector('.hamburger')?.classList.remove('active');
+      document.querySelector('.nav-links')?.classList.remove('active');
+    }
+  
+    // Optional: if someone rotates their phone / resizes bigger, force-close mobile menu
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) closeMenu();
+    });
+  </script>
+  </body>
+  </html>
+  
