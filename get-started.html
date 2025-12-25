@@ -437,11 +437,12 @@
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.6s ease;
+            transition: transform 0.3s ease;
             transform-style: preserve-3d;
+            cursor: pointer;
         }
 
-        .flip-card:hover .flip-card-inner {
+        .flip-card.flipped .flip-card-inner {
             transform: rotateY(180deg);
         }
 
@@ -530,17 +531,6 @@
             position: absolute;
             left: 0;
             color: var(--warm-yellow);
-        }
-
-        /* Touch device support */
-        @media (hover: none) {
-            .flip-card {
-                cursor: pointer;
-            }
-            
-            .flip-card.flipped .flip-card-inner {
-                transform: rotateY(180deg);
-            }
         }
 
         /* CTA Section */
@@ -689,7 +679,7 @@
         </div>
         
         <div class="hero-contact">
-            <a href="/cdn-cgi/l/email-protection#6c010d08051f03024208420e19180f0407032c0b010d0500420f0301"><span class="__cf_email__" data-cfemail="bed3dfdad7cdd1d090da90dccbcaddd6d5d1fed9d3dfd7d290ddd1d3">madison.d.butchko@gmail.com</span></a> · 
+            <a href="/cdn-cgi/l/email-protection#6c010d08051f03024208420e19180f0407032c0b010d0500420f0301"><span class="__cf_email__" data-cfemail="bed3dfdad7cdd1d090da90dccbcaddd6d5d1fed9d3dfd7d290ddd1d3"><span class="__cf_email__" data-cfemail="ec818d88859f8382c288c28e99988f848783ac8b818d8580c28f8381">[email&#160;protected]</span></span></a> · 
             <a href="tel:248-212-3123">248-212-3123</a> · 
             Text & email welcome
         </div>
@@ -776,12 +766,12 @@
                     <div class="flip-card" onclick="this.classList.toggle('flipped')">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
-                                <h4>Activities & Leadership</h4>
+                                <h4>Activities & Resume</h4>
                                 <p class="preview">Strategic extracurricular planning</p>
                             </div>
                             <div class="flip-card-back">
                                 <ul class="detail-list">
-                                    <li>Extracurricular strategy focused on depth, initiative, and impact</li>
+                                    <li>Extracurricular strategy focused on depth, initiative, leadership, and impact</li>
                                     <li>Framing and positioning activities effectively within applications</li>
                                 </ul>
                             </div>
@@ -899,7 +889,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         function toggleMenu() {
             document.querySelector('.hamburger').classList.toggle('active');
@@ -917,10 +907,3 @@
             event.currentTarget.classList.add('active');
             
             // Update cards
-            document.querySelectorAll('.cards-grid').forEach(grid => grid.classList.remove('active'));
-            document.getElementById(category).classList.add('active');
-        }
-    </script>
-
-</body>
-</html>
