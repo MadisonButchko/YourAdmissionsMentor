@@ -354,179 +354,91 @@
             color: var(--deep-blue);
         }
 
-        /* Category Tabs */
-        .category-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .category-tab {
-            padding: 1rem 2rem;
-            background: white;
-            border: 2px solid transparent;
-            border-radius: 50px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-gray);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
-        }
-
-        .category-tab:hover {
-            border-color: var(--medium-blue);
-            color: var(--deep-blue);
-        }
-
-        .category-tab.active {
-            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--navy-blue) 100%);
-            color: white;
-            box-shadow: 0 4px 20px rgba(46, 92, 138, 0.3);
-        }
-
-        /* Cards Container */
-        .cards-container {
-            max-width: 1000px;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .cards-grid {
-            display: none;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .cards-grid.active {
-            display: grid;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Flip Cards */
-        .flip-card {
-            height: 220px;
-            perspective: 1000px;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s ease;
-            transform-style: preserve-3d;
-        }
-
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front,
-        .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 16px;
-            padding: 1.8rem;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .flip-card-front {
+        .service-card {
             background: white;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
-            justify-content: center;
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
-        }
-
-        .flip-card-front::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--warm-yellow) 0%, var(--medium-blue) 100%);
-            border-radius: 16px 16px 0 0;
-        }
-
-        .flip-card-front h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--navy-blue);
             margin-bottom: 0.5rem;
         }
 
-        .flip-card-front .preview {
-            font-size: 0.85rem;
+        .service-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            color: var(--navy-blue);
+            margin: 0;
+        }
+
+        .service-toggle {
+            font-size: 1.3rem;
+            color: var(--medium-blue);
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card.open .service-toggle {
+            transform: rotate(45deg);
+        }
+
+        .service-preview {
+            font-size: 0.9rem;
             color: var(--text-gray);
             line-height: 1.5;
         }
 
-        .flip-card-back {
-            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--navy-blue) 100%);
-            color: white;
-            transform: rotateY(180deg);
-            justify-content: center;
+        .service-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
         }
 
-        .flip-card-back h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            opacity: 0.9;
+        .service-card.open .service-details {
+            max-height: 300px;
         }
 
-        .flip-card-back p {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            opacity: 0.95;
-        }
-
-        .flip-card-back .detail-list {
+        .service-details ul {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            padding-top: 1rem;
         }
 
-        .flip-card-back .detail-list li {
-            font-size: 0.88rem;
-            line-height: 1.6;
-            padding: 0.3rem 0;
-            padding-left: 1.2rem;
+        .service-details li {
+            padding: 0.4rem 0;
+            padding-left: 1.3rem;
             position: relative;
+            color: var(--text-gray);
+            font-size: 0.88rem;
+            line-height: 1.5;
         }
 
-        .flip-card-back .detail-list li::before {
+        .service-details li::before {
             content: '✓';
             position: absolute;
             left: 0;
             color: var(--warm-yellow);
-        }
-
-        /* Touch device support */
-        @media (hover: none) {
-            .flip-card {
-                cursor: pointer;
-            }
-            
-            .flip-card.flipped .flip-card-inner {
-                transform: rotateY(180deg);
-            }
+            font-weight: bold;
         }
 
         /* CTA Section */
@@ -583,6 +495,10 @@
 
         /* Mobile Responsive */
         @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .process-steps {
                 flex-wrap: wrap;
                 justify-content: center;
@@ -596,13 +512,13 @@
             .step-card {
                 flex: 0 0 45%;
             }
-
-            .cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         @media (max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
             .step-card {
                 flex: 0 0 100%;
             }
@@ -616,23 +532,6 @@
                 width: 100%;
                 max-width: 280px;
                 justify-content: center;
-            }
-
-            .category-tabs {
-                gap: 0.8rem;
-            }
-
-            .category-tab {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .flip-card {
-                height: 200px;
             }
         }
     </style>
@@ -675,7 +574,7 @@
         </div>
         
         <div class="hero-contact">
-            <a href="/cdn-cgi/l/email-protection#6c010d08051f03024208420e19180f0407032c0b010d0500420f0301"><span class="__cf_email__" data-cfemail="bed3dfdad7cdd1d090da90dccbcaddd6d5d1fed9d3dfd7d290ddd1d3">[email&#160;protected]</span></a> · 
+            <a href="mailto:madison.d.butchko@gmail.com">madison.d.butchko@gmail.com</a> · 
             <a href="tel:248-212-3123">248-212-3123</a> · 
             Text & email welcome
         </div>
@@ -714,157 +613,94 @@
     <section class="services-section">
         <div class="process-container">
             <h2 class="section-title">Services Provided</h2>
-            
-            <!-- Category Tabs -->
-            <div class="category-tabs">
-                <button class="category-tab active" onclick="showCategory('admissions')">
-                    College Admissions
-                </button>
-                <button class="category-tab" onclick="showCategory('writing')">
-                    Writing Instruction
-                </button>
-            </div>
-
-            <!-- Cards Container -->
-            <div class="cards-container">
-                <!-- College Admissions Cards -->
-                <div id="admissions" class="cards-grid active">
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <h4>Admissions Mentorship</h4>
-                                <p class="preview">Personalized 1:1 guidance throughout the process</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <ul class="detail-list">
-                                    <li>Personalized 1:1 guidance throughout the entire admissions process</li>
-                                    <li>Strategic planning across academics, activities, leadership, and timelines</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="services-grid">
+                <div class="service-card" onclick="toggleService(this)">
+                    <div class="service-header">
+                        <h3>College Admissions Mentorship</h3>
+                        <span class="service-toggle">+</span>
                     </div>
-
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <h4>Essay & Application Narrative</h4>
-                                <p class="preview">Cohesive, authentic application storytelling</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <ul class="detail-list">
-                                    <li>Line-by-line essay editing with multiple revision rounds until polished</li>
-                                    <li>Thematic development for a cohesive, authentic application story</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <h4>Activities & Leadership</h4>
-                                <p class="preview">Strategic extracurricular planning</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <ul class="detail-list">
-                                    <li>Extracurricular strategy focused on depth, initiative, and impact</li>
-                                    <li>Framing and positioning activities effectively within applications</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <h4>Interview Coaching</h4>
-                                <p class="preview">Confident, genuine communication</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <ul class="detail-list">
-                                    <li>Mock interviews with actionable coaching and feedback</li>
-                                    <li>Guidance for confident, genuine communication in interviews</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <h4>Strategy & Oversight</h4>
-                                <p class="preview">School lists, timelines, final reviews</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <ul class="detail-list">
-                                    <li>School list creation and application timelines</li>
-                                    <li>Final review for clarity, accuracy, and submission readiness</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <h4>Trusted and Dedicated Support</h4>
-                                <p class="preview">Guidance through a high-stakes process</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <ul class="detail-list">
-                                    <li>Close, consistent involvement from someone who gets to know you well</li>
-                                    <li>Applications that feel honest, thoughtful, and genuinely personal</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <p class="service-preview">One-on-one guidance throughout the entire admissions process</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>One-on-one guidance throughout the admissions process</li>
+                            <li>Strategic planning across academics, activities, and leadership</li>
+                            <li>Consistent, individualized mentorship with ongoing check-ins</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Writing Instruction Cards -->
-                <div id="writing" class="cards-grid">
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <h4>Core Writing Instruction</h4>
-                                <p class="preview">Structure, clarity, and argumentation</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <ul class="detail-list">
-                                    <li>Lessons on structure, clarity, argumentation, and flow</li>
-                                    <li>Skill-building for confidence and independence as a writer</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="service-card" onclick="toggleService(this)">
+                    <div class="service-header">
+                        <h3>Intensive Essay Editing</h3>
+                        <span class="service-toggle">+</span>
                     </div>
-
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <h4>Creative Writing</h4>
-                                <p class="preview">Narrative and personal essay craft</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <ul class="detail-list">
-                                    <li>Narrative and personal essay development with craft-based coaching</li>
-                                    <li>Voice, storytelling, sensory detail, and meaningful reflection</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <p class="service-preview">Deep, line-by-line editing with detailed feedback</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>Deep, line-by-line editing and revising with detailed feedback</li>
+                            <li>Multiple revision rounds until admissions-ready</li>
+                            <li>Voice, clarity, and impact refinement</li>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <h4>Academic & Research Writing</h4>
-                                <p class="preview">Essays, papers, and assignments</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <ul class="detail-list">
-                                    <li>Support for essays, research papers, and academic assignments</li>
-                                    <li>Guidance on structure, evidence use, organization, and citations</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="service-card" onclick="toggleService(this)">
+                    <div class="service-header">
+                        <h3>Application Narrative Strategy</h3>
+                        <span class="service-toggle">+</span>
+                    </div>
+                    <p class="service-preview">Cohesive story across essays and application sections</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>Cohesive story across essays and application sections</li>
+                            <li>Identification of core themes and strengths</li>
+                            <li>Intentional application positioning</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="toggleService(this)">
+                    <div class="service-header">
+                        <h3>Activities & Leadership Guidance</h3>
+                        <span class="service-toggle">+</span>
+                    </div>
+                    <p class="service-preview">Strategic extracurricular and leadership planning</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>Strategic extracurricular and leadership planning</li>
+                            <li>Focus on depth, growth, and authenticity</li>
+                            <li>Effective positioning of activities for admissions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="toggleService(this)">
+                    <div class="service-header">
+                        <h3>Application Strategy & Oversight</h3>
+                        <span class="service-toggle">+</span>
+                    </div>
+                    <p class="service-preview">School list and application strategy guidance</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>School list and application strategy</li>
+                            <li>Common App section-by-section guidance</li>
+                            <li>Final reviews before submission</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="toggleService(this)">
+                    <div class="service-header">
+                        <h3>Trusted and Dedicated Support</h3>
+                        <span class="service-toggle">+</span>
+                    </div>
+                    <p class="service-preview">Guidance through a high-stakes, high-stress process</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>Trusted guidance through a high-stakes, high-stress admissions process</li>
+                            <li>Close, consistent involvement from someone who gets to know you well</li>
+                            <li>Applications that feel honest, thoughtful, and genuinely personal</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -885,7 +721,6 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         function toggleMenu() {
             document.querySelector('.hamburger').classList.toggle('active');
@@ -897,14 +732,8 @@
             document.querySelector('.nav-links').classList.remove('active');
         }
 
-        function showCategory(category) {
-            // Update tabs
-            document.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-            
-            // Update cards
-            document.querySelectorAll('.cards-grid').forEach(grid => grid.classList.remove('active'));
-            document.getElementById(category).classList.add('active');
+        function toggleService(card) {
+            card.classList.toggle('open');
         }
     </script>
 
