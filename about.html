@@ -245,11 +245,12 @@
 
         .hero-text h1 {
             font-family: 'DM Serif Display', serif;
-            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-size: clamp(1.6rem, 4vw, 2.8rem);
             color: var(--navy-blue);
             margin-bottom: 1rem;
             letter-spacing: 0.1rem;
-            white-space: nowrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .hero-text .subtitle {
@@ -749,19 +750,43 @@
 
         /* Mobile Responsive */
         @media (max-width: 900px) {
+            .about-hero {
+                margin-top: 60px;
+                padding: 2.5rem 1.5rem 3rem;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
+                gap: 2rem;
                 text-align: center;
             }
 
             .photo-container {
-                max-width: 350px;
+                max-width: 280px;
                 margin: 0 auto;
             }
 
             .photo-frame {
                 transform: rotate(0deg);
+            }
+
+            .hero-text {
+                padding: 0;
+            }
+
+            .hero-text h1 {
+                font-size: 1.6rem;
+                line-height: 1.3;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-text .intro {
+                font-size: 1rem;
+                line-height: 1.7;
+                text-align: left;
             }
 
             .stats-row {
@@ -781,9 +806,38 @@
                 padding: 1rem;
                 font-size: 0.85rem;
             }
+
+            .tab-content {
+                padding: 1.5rem;
+            }
+
+            .hero-cta-section {
+                padding-top: 1.5rem;
+            }
+
+            .hero-cta-buttons {
+                align-items: center;
+            }
         }
 
         @media (max-width: 500px) {
+            .about-hero {
+                margin-top: 55px;
+                padding: 2rem 1rem;
+            }
+
+            .photo-container {
+                max-width: 220px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.4rem;
+            }
+
+            .hero-text .intro {
+                font-size: 0.95rem;
+            }
+
             .tab-btn {
                 flex: 1 1 100%;
             }
@@ -797,6 +851,15 @@
                 width: 100%;
                 max-width: 250px;
                 justify-content: center;
+            }
+
+            .tabbed-section {
+                padding: 2rem 1rem;
+            }
+
+            .journey-content p,
+            .teaching-content p {
+                font-size: 1rem;
             }
         }
     </style>
@@ -851,9 +914,9 @@
                     </div>
                     
                     <div class="hero-contact-info">
-                        <a href="/cdn-cgi/l/email-protection#dc91bdb8b5afb3b2f2b8f2bea9a8bfb4b7b39cbbb1bdb5b0f2bfb3b1f0a5b3a9aebdb8b1b5afafb5b3b2afb1b9b2a8b3ae9cbbb1bdb5b0f2bfb3b1"><span class="__cf_email__" data-cfemail="b7fad6d3dec4d8d999d399d5c2c3d4dfdcd8f7d0dad6dedb99d4d8da">madison.d.butchko@gmail.com</span></a>
+                        <a href="/cdn-cgi/l/email-protection#dc91bdb8b5afb3b2f2b8f2bea9a8bfb4b7b39cbbb1bdb5b0f2bfb3b1f0a5b3a9aebdb8b1b5afafb5b3b2afb1b9b2a8b3ae9cbbb1bdb5b0f2bfb3b1"><span class="__cf_email__" data-cfemail="b7fad6d3dec4d8d999d399d5c2c3d4dfdcd8f7d0dad6dedb99d4d8da"><span class="__cf_email__" data-cfemail="573a36333e243839793379352223343f3c3817303a363e3b7934383a">madison.d.butchko@gmail.com</span></span></a>
                         <span class="separator">·</span>
-                        <a href="/cdn-cgi/l/email-protection#703d111419031f1e5e145e12050413181b1f30171d11191c5e131f1d5c091f050211141d190303191f1e031d151e041f0230171d11191c5e131f1d"><span class="__cf_email__" data-cfemail="91e8fee4e3f0f5fcf8e2e2f8feffe2fcf4ffe5fee3d1f6fcf0f8fdbff2fefc">youradmissionsmentor@gmail.com</span></a>
+                        <a href="/cdn-cgi/l/email-protection#703d111419031f1e5e145e12050413181b1f30171d11191c5e131f1d5c091f050211141d190303191f1e031d151e041f0230171d11191c5e131f1d"><span class="__cf_email__" data-cfemail="91e8fee4e3f0f5fcf8e2e2f8feffe2fcf4ffe5fee3d1f6fcf0f8fdbff2fefc"><span class="__cf_email__" data-cfemail="b4cddbc1c6d5d0d9ddc7c7dddbdac7d9d1dac0dbc6f4d3d9d5ddd89ad7dbd9">youradmissionsmentor@gmail.com</span></span></a>
                         <span class="separator">·</span>
                         <a href="tel:248-212-3123">248-212-3123</a>
                     </div>
@@ -961,9 +1024,9 @@
             </a>
         </div>
         <div class="cta-contact-info">
-            <a href="/cdn-cgi/l/email-protection#f7ba96939e849899d993d9958283949f9c98b7909a969e9bd994989adb8e98828596939a9e84849e9899849a9299839885b7909a969e9bd994989a"><span class="__cf_email__" data-cfemail="a8e5c9ccc1dbc7c686cc86cadddccbc0c3c7e8cfc5c9c1c486cbc7c5">madison.d.butchko@gmail.com</span></a>
+            <a href="/cdn-cgi/l/email-protection#f7ba96939e849899d993d9958283949f9c98b7909a969e9bd994989adb8e98828596939a9e84849e9899849a9299839885b7909a969e9bd994989a"><span class="__cf_email__" data-cfemail="a8e5c9ccc1dbc7c686cc86cadddccbc0c3c7e8cfc5c9c1c486cbc7c5"><span class="__cf_email__" data-cfemail="701d111419031f1e5e145e12050413181b1f30171d11191c5e131f1d">madison.d.butchko@gmail.com</span></span></a>
             <span class="separator">·</span>
-            <a href="/cdn-cgi/l/email-protection#aee3cfcac7ddc1c080ca80ccdbdacdc6c5c1eec9c3cfc7c280cdc1c382d7c1dbdccfcac3c7ddddc7c1c0ddc3cbc0dac1dceec9c3cfc7c280cdc1c3"><span class="__cf_email__" data-cfemail="fa83958f889b9e9793898993959489979f948e9588ba9d979b9396d4999597">youradmissionsmentor@gmail.com</span></a>
+            <a href="/cdn-cgi/l/email-protection#aee3cfcac7ddc1c080ca80ccdbdacdc6c5c1eec9c3cfc7c280cdc1c382d7c1dbdccfcac3c7ddddc7c1c0ddc3cbc0dac1dceec9c3cfc7c280cdc1c3"><span class="__cf_email__" data-cfemail="fa83958f889b9e9793898993959489979f948e9588ba9d979b9396d4999597"><span class="__cf_email__" data-cfemail="6c1503191e0d0801051f1f0503021f01090218031e2c0b010d0500420f0301">youradmissionsmentor@gmail.com</span></span></a>
             <span class="separator">·</span>
             <a href="tel:248-212-3123">248-212-3123</a>
         </div>
@@ -977,7 +1040,7 @@
     </footer>
 
     <!-- Cloudflare email decoder (required if you're using email-protection spans) -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
     <script>
         // Mobile menu toggle
@@ -1009,16 +1072,10 @@
 
         // Optional: allow linking directly to a tab with #journey / #values / #teaching
         document.addEventListener('DOMContentLoaded', () => {
-            const hash = (window.location.hash || '').replace('#', '').trim();
-            if (!hash) return;
-
-            const panel = document.getElementById(hash);
-            const btn = Array.from(document.querySelectorAll('.tab-btn'))
-                .find(b => (b.getAttribute('onclick') || '').includes("'" + hash + "'"));
-
-            if (panel && btn) {
-                // Simulate a click so styles match
-                openTab({ currentTarget: btn }, hash);
+            const hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById(hash)) {
+                const btn = document.querySelector(`.tab-btn[onclick*="${hash}"]`);
+                if (btn) btn.click();
             }
         });
     </script>
