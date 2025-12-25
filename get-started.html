@@ -466,6 +466,22 @@
             text-align: center;
         }
 
+        /* Subtle tap hint icon */
+        .flip-card-front::after {
+            content: '↻';
+            position: absolute;
+            bottom: 12px;
+            right: 14px;
+            font-size: 0.85rem;
+            color: var(--medium-blue);
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+
+        .flip-card:hover .flip-card-front::after {
+            opacity: 0.7;
+        }
+
         .flip-card-front::before {
             content: '';
             position: absolute;
@@ -679,7 +695,7 @@
         </div>
         
         <div class="hero-contact">
-            <a href="/cdn-cgi/l/email-protection#6c010d08051f03024208420e19180f0407032c0b010d0500420f0301"><span class="__cf_email__" data-cfemail="bed3dfdad7cdd1d090da90dccbcaddd6d5d1fed9d3dfd7d290ddd1d3"><span class="__cf_email__" data-cfemail="ec818d88859f8382c288c28e99988f848783ac8b818d8580c28f8381">[email&#160;protected]</span></span></a> · 
+            <a href="/cdn-cgi/l/email-protection#6c010d08051f03024208420e19180f0407032c0b010d0500420f0301"><span class="__cf_email__" data-cfemail="bed3dfdad7cdd1d090da90dccbcaddd6d5d1fed9d3dfd7d290ddd1d3"><span class="__cf_email__" data-cfemail="ec818d88859f8382c288c28e99988f848783ac8b818d8580c28f8381">madison.d.butchko@gmail.com</span></span></a> · 
             <a href="tel:248-212-3123">248-212-3123</a> · 
             Text & email welcome
         </div>
@@ -733,7 +749,7 @@
             <div class="cards-container">
                 <!-- College Admissions Cards -->
                 <div id="admissions" class="cards-grid active">
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card" >
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <h4>Admissions Mentorship</h4>
@@ -748,7 +764,7 @@
                         </div>
                     </div>
 
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card" >
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <h4>Essay & Application Narrative</h4>
@@ -763,7 +779,7 @@
                         </div>
                     </div>
 
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card" >
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <h4>Activities & Resume</h4>
@@ -778,7 +794,7 @@
                         </div>
                     </div>
 
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card" >
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <h4>Interview Coaching</h4>
@@ -793,7 +809,7 @@
                         </div>
                     </div>
 
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card" >
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <h4>Strategy & Oversight</h4>
@@ -808,7 +824,7 @@
                         </div>
                     </div>
 
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card" >
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <h4>Trusted and Dedicated Support</h4>
@@ -826,7 +842,7 @@
 
                 <!-- Writing Instruction Cards -->
                 <div id="writing" class="cards-grid">
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card" >
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <h4>Core Writing Instruction</h4>
@@ -841,7 +857,7 @@
                         </div>
                     </div>
 
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card" >
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <h4>Creative Writing</h4>
@@ -856,7 +872,7 @@
                         </div>
                     </div>
 
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card" >
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <h4>Academic & Research Writing</h4>
@@ -889,7 +905,6 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         function toggleMenu() {
             document.querySelector('.hamburger').classList.toggle('active');
@@ -906,4 +921,35 @@
             document.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
             event.currentTarget.classList.add('active');
             
-            // Update cards
+            // Update cards - hide all grids, show selected one
+            document.querySelectorAll('.cards-grid').forEach(grid => grid.classList.remove('active'));
+            document.getElementById(category).classList.add('active');
+            
+            // Reset any flipped cards when switching tabs
+            document.querySelectorAll('.flip-card.flipped').forEach(card => card.classList.remove('flipped'));
+        }
+
+        // Handle flip card clicks
+        document.querySelectorAll('.flip-card').forEach(card => {
+            // Add accessibility attributes
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-pressed', 'false');
+            
+            card.addEventListener('click', function() {
+                this.classList.toggle('flipped');
+                this.setAttribute('aria-pressed', this.classList.contains('flipped'));
+            });
+            
+            // Keyboard support - flip on Enter or Space
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.classList.toggle('flipped');
+                    this.setAttribute('aria-pressed', this.classList.contains('flipped'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
